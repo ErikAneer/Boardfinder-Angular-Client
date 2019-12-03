@@ -4,11 +4,14 @@ import { Snowboard } from '../snowboard';
 import { Observable } from 'rxjs';
 import { SnowboardFilterObject } from '../snowboardFilterObject';
 import { RequestOptions } from '@angular/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class SnowboardService {
 
-  private boardsUrl: string = 'http://localhost:8080/board';
+  
+  baseUrl = environment.baseUrl;
+  private boardsUrl: string = this.baseUrl + '/snowboards';
   sbFObject: SnowboardFilterObject;
 
   constructor(private http: HttpClient) {
