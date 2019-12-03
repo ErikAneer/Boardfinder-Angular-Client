@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Shoesize } from '../shoesize';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -11,12 +12,13 @@ import { Observable } from 'rxjs';
 export class ShoesizeService {
 
   private shoesizeUrl: string;
+  baseUrl = environment.baseUrl;
 
   constructor(private http: HttpClient) {
-    this.shoesizeUrl = 'http://localhost:8080/shoesize';
+    this.shoesizeUrl = '/shoesizes/';
   }
  
   public findAll(): Observable<Shoesize[]> {
-    return this.http.get<Shoesize[]>(this.shoesizeUrl);
+    return this.http.get<Shoesize[]>(this.baseUrl + this.shoesizeUrl);
   }
 }
