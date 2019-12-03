@@ -1,0 +1,160 @@
+<div class="card resultcardcontainer my-5">
+    <div *ngIf="errorMessage" class="alert alert-warning">
+        <strong>Ooops...</strong> It seems like the server is out riding fresh powder. Please try again later.
+     </div>
+  <div *ngIf="snowboards?.length > 0">
+    <div>
+      <h1 class="text-center" *ngIf="snowboards?.length > 1">The snowboards for you!</h1>
+      <h1 class="text-center" *ngIf="snowboards?.length == 1">The snowboard for you!</h1>
+      <p class="text-center matching-board-description" *ngIf="snowboards?.length > 1">The following boards match your
+        search preferences and are all great {{ preferredTerrain | lowercase}} snowboards:</p>
+      <p class="text-center matching-board-description" *ngIf="snowboards?.length == 1">The following board match your
+        search preferences and is a great {{ preferredTerrain | lowercase }} snowboard:</p>
+      <br>
+    </div>
+
+    <div class="row" style="display: flex;">
+
+      <div class="card boardcard" *ngFor='let board of snowboards | slice:0:9'>
+        <div class="view">
+          <!--Card image-->
+          <img src="../assets/img/boardimages/{{board?.imagePath}}" alt="Card image cap" style="width: 100%"
+            class="card-img-top" type="button" (click)="setSelectedBoard(board.id)">
+        </div>
+        <!--Card content-->
+        <div class="card-body">
+          <!--Title-->
+          <p style="text-transform: uppercase; color:slategrey;">{{board.ridingterrains[0].ridingType.ridingTypeName}}
+            Snowboard</p>
+          <h4 class="card-title" type="button" (click)="setSelectedBoard(board.id)">Men's Burton {{ board.name }} Snowboard
+          </h4>
+          <div>
+            <p *ngIf="board.boardSizeSpecs.length >1">Available sizes:</p>
+            <p *ngIf="board.boardSizeSpecs.length ==1">Available size:</p>
+            <div class="board-lengths" *ngIf="board.boardSizeSpecs.length <= 5">
+              <label
+                style="background:lightgrey; border-color: slategray; border: 3px; padding:5px; margin-right: 5px; "
+                *ngFor='let spec of board.boardSizeSpecs'>{{ spec.boardLength}}</label>
+
+            </div>
+            <div class="board-lengths" *ngIf="board.boardSizeSpecs.length > 5">
+              <label
+                style="background:lightgrey; border-color: slategray; border: 3px; padding:5px; margin-right: 5px; "
+                *ngFor='let spec of board.boardSizeSpecs | slice:0:5;'>{{ spec.boardLength}}</label>
+              <label for=""> + {{ board.boardSizeSpecs.length -5 }} more</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!--End display of search result -->
+
+  <div *ngIf="snowboards?.length == 0 && snowboardsAlternativeFilter?.length == 0">
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2 class="text-center">Ooops, your search did not match any boards.</h2>
+    <br>
+    <!--Text-->
+    <div class="col-8 no-boards-message">
+      <p>There are unfortunately no boards matching your given preferences.</p>
+      <br>
+      <p>Are you sure you got everything right? This as there are Burton snowboard for basically everyone. Try doing a
+        new search, changing the shape,
+        bend and or flex.</p>
+    </div>
+    <button class="btn cardbottombutton" (click)="backToStart()" mdbWavesEffect>Give it a new try!</button>
+  </div> <!-- if search result is zero -->
+
+  <!-- showing alternative snowboards -->
+  <div *ngIf="snowboards?.length > 0 && snowboards?.length <= 7 && snowboardsAlternativeFilter?.length > 0">
+    <br>
+    <h1 class="text-center">Check out these {{ preferredTerrain }} boards too!</h1>
+    <p class="text-center matching-board-description">The following boards might be interesting for you even though they are not a full match. A little different bend, 
+      shape or flex than you search for, still awesome {{ preferredTerrain | lowercase }} snowboards.</p>
+    <br>
+
+    <div class="row" style="display: flex;">
+
+      <div class="card boardcard" *ngFor='let board of snowboardsAlternativeFilter | slice:0:6;'>
+        <div class="view">
+          <!--Card image-->
+          <img src="../assets/img/boardimages/{{board.imagePath}}" alt="Card image cap" style="width: 100%"
+            class="card-img-top" type="button" (click)="setSelectedBoard(board.id)">
+        </div>
+        <!--Card content-->
+        <div class="card-body">
+          <!--Title-->
+          <p style="text-transform: uppercase; color:slategrey;">{{board.ridingterrains[0].ridingType.ridingTypeName}}
+            Snowboard</p>
+          <h2 class="card-title" type="button" (click)="setSelectedBoard(board.id)">{{ board.name }} {{ board.length }}
+          </h2>
+          <div>
+            <p *ngIf="board.boardSizeSpecs.length >1">Available sizes:</p>
+            <p *ngIf="board.boardSizeSpecs.length ==1">Available size:</p>
+            <div class="board-lengths" *ngIf="board.boardSizeSpecs.length <= 5">
+              <label
+                style="background:lightgrey; border-color: slategray; border: 3px; padding:5px; margin-right: 5px; "
+                *ngFor='let spec of board.boardSizeSpecs'>{{ spec.boardLength}}</label>
+
+            </div>
+            <div class="board-lengths" *ngIf="board.boardSizeSpecs.length > 5">
+              <label
+                style="background:lightgrey; border-color: slategray; border: 3px; padding:5px; margin-right: 5px; "
+                *ngFor='let spec of board.boardSizeSpecs | slice:0:5;'>{{ spec.boardLength}}</label>
+              <label for=""> + {{ board.boardSizeSpecs.length -5 }} more</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- End alternative filter div-->
+  </div>
+  <!-- showing alternative snowboards -->
+  <div *ngIf="snowboards?.length == 0 && snowboardsAlternativeFilter?.length > 0">
+    <br>
+    <h1 class="text-center matching-board-description">Check out these {{ preferredTerrain }} boards!</h1>
+    <p>Your search did unfortunately not give any perfect matches. However, the following boards might be interesting
+      for you even though they are not a full match. A little different in shape, bend or flex than you searched for,
+      still awesome {{ preferredTerrain | lowercase }} boards.</p>
+    <br>
+    <div class="row" style="display: flex;">
+      <div class=" card boardcard" *ngFor='let board of snowboardsAlternativeFilter | slice:0:6;'>
+        <div class="view">
+          <!--Card image-->
+          <img src="../assets/img/boardimages/{{board.imagePath}}" alt="Card image cap" style="width: 100%"
+            class="card-img-top" type="button" (click)="setSelectedBoard(board.id)">
+        </div>
+        <!--Card content-->
+        <div class="card-body">
+          <!--Title-->
+          <p style="text-transform: uppercase; color:slategrey;">{{board.ridingterrains[0].ridingType.ridingTypeName}}
+            Snowboard</p>
+          <h2 class="card-title" type="button" (click)="setSelectedBoard(board.id)">{{ board.name }} {{ board.length }}
+          </h2>
+          <div>
+            <p *ngIf="board.boardSizeSpecs.length >1">Available sizes:</p>
+            <p *ngIf="board.boardSizeSpecs.length ==1">Available size:</p>
+            <div class="board-lengths" *ngIf="board.boardSizeSpecs.length <= 5">
+              <label
+                style="background:lightgrey; border-color: slategray; border: 3px; padding:5px; margin-right: 5px; "
+                *ngFor='let spec of board.boardSizeSpecs'>{{ spec.boardLength}}</label>
+
+            </div>
+            <div class="board-lengths" *ngIf="board.boardSizeSpecs.length > 5">
+              <label
+                style="background:lightgrey; border-color: slategray; border: 3px; padding:5px; margin-right: 5px; "
+                *ngFor='let spec of board.boardSizeSpecs | slice:0:5;'>{{ spec.boardLength}}</label>
+              <label for=""> + {{ board.boardSizeSpecs.length -5 }} more</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- End alternative filter div-->
+  </div>
+  <div class="card-footer" *ngIf="snowboards?.length > 0 || snowboardsAlternativeFilter?.length > 0">
+    <button class="btn button-restart" (click) ="backToStart();" mdbWavesEffect >Search again</button>
+</div>
+</div>

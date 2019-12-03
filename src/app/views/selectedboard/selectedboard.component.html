@@ -1,0 +1,260 @@
+<div *ngIf='selectedBoard != null' class="card displayboardcardcontainer my-5">
+  <!--<div  class="card-body"> -->
+  <section>
+    <!--Board Top section -->
+    <div class="row">
+      <!--Board image col-->
+      <div class="col-sm-6">
+        <img src="assets/img/boardimages/{{selectedBoard.imagePath}}" alt="Card image cap" style="width: 100%">
+
+      </div>
+      <!--Board Title col-->
+      <div class="col-sm-6">
+        <br>
+        <p style="text-transform: uppercase; color:slategrey;">
+          {{selectedBoard.ridingterrains[0].ridingType.ridingTypeName}} Snowboard</p>
+        <h2>Men's Burton {{ selectedBoard.name }} Snowboard</h2>
+        <br>
+
+        <div>
+          <p *ngIf="selectedBoard.boardSizeSpecs.length >1">Available sizes:</p>
+          <p *ngIf="selectedBoard.boardSizeSpecs.length ==1">Available size:</p>
+          <div class="board-lengths" *ngIf="selectedBoard.boardSizeSpecs.length <= 5">
+            <label style="background:lightgrey; border-color: slategray; border: 3px; padding:5px; margin-right: 5px; "
+              *ngFor='let spec of selectedBoard.boardSizeSpecs'>{{ spec.boardLength}}</label>
+
+          </div>
+          <div class="board-lengths" *ngIf="selectedBoard.boardSizeSpecs.length > 5">
+            <label style="background:lightgrey; border-color: slategray; border: 3px; padding:5px; margin-right: 5px; "
+              *ngFor='let spec of selectedBoard.boardSizeSpecs;'>{{ spec.boardLength}}</label>
+
+
+          </div>
+
+          <!-- Display board length suggestions-->
+          <div>
+            <div>
+              <br>
+            </div>
+            <div *ngIf="selectedBoard.boardSizeSpecs.length == 1">
+              <h5>THE {{ selectedBoard.boardSizeSpecs[0].boardLength}} SHOULD DO THE TRICK.</h5>
+              <p>
+                Lucky you! As this awesome board apears in your search it should suit you fine.
+                To be sure your fit is dialed, please don't hesitate to call one of the Burton Guides to get their
+                expert advice: 00800 287 866 13
+              </p>
+
+
+            </div>
+            <div
+              *ngIf="selectedBoard.boardSizeSpecs.length > 1 && recommendedBoardLengths != null && recommendedBoardLengths.length > 1">
+              <h5>YOU COULD GO EITHER WAY - A {{ recommendedBoardLengths[0]}} OR A {{ recommendedBoardLengths[1]}}.</h5>
+              <p>
+                Sounds like a {{ recommendedBoardLengths[0]}} or {{ recommendedBoardLengths[1]}} will suit you well.
+                Go bigger for more float in powder or smaller if you're into riding jumps and rails.
+                Need help deciding? Call the Burton Guides: 00800 287 866 13
+              </p>
+            </div>
+
+            <div
+              *ngIf="selectedBoard.boardSizeSpecs.length > 1 && recommendedBoardLengths != null && recommendedBoardLengths.length == 1">
+              <h5>A {{ recommendedBoardLengths[0]}} SHOULD DO THE TRICK.</h5>
+              <p>
+                Sounds like a {{ recommendedBoardLengths[0]}} will fit you perfectly. To be sure your fit is dialed,
+                please don't hesitate to call
+                one of the Burton Guides to get their expert advice: 00800 287 866 13
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="board-description">
+    <div class="row">
+      <div class="col-sm-6 grid-box">
+        <h3>Men's Burton {{ selectedBoard.name }} Snowboard</h3>
+        <div style="text-transform: uppercase; color:slategrey;">
+          <label>Skill Level: &nbsp; </label>
+          <ng-container *ngFor='let riderLevel of selectedBoard.riderLevels;  let i = index;'>
+            <label *ngIf="i !=selectedBoard.riderLevels.length-1"
+              class="text-left">{{ riderLevel.riderLevel }}&nbsp;/&nbsp; </label>
+            <label *ngIf="i ==selectedBoard.riderLevels.length-1"
+              class="text-left">{{ riderLevel.riderLevel }}&nbsp;</label>
+
+          </ng-container>
+
+
+        </div>
+
+
+        <h3 class="info-heading">Terrain </h3><button class="infobutton"
+          mdbTooltip="Riders enjoy all kinds of terrain, from groomers at the resort or powder in the backcountry, to obstacles in the terrain park or the streets."
+          placement="right">
+          <a class="infobutton-text">i</a>
+        </button>
+        <div *ngFor='let riderterrain of selectedBoard.ridingterrains;'>
+          <p class="text-left rider-terrains">
+            {{ riderterrain.ridingType.ridingTypeName }}: {{ riderterrain.value }}/10</p>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style.width="{{riderterrain.value * 10}}%"
+              attr.aria-valuenow="{{riderterrain.value*10}}" aria-valuemax="100"></div>
+          </div>
+
+        </div>
+
+        <div class="stiffness-chart">
+          <br>
+          <h3 class="info-heading">Stiffness </h3><button class="infobutton"
+            mdbTooltip="Soft and playful, hard and fast, or somewhere in between, a boards stiffness, or personality, should complement the kind of riding you like to do."
+            placement="right">
+            <a class="infobutton-text">i</a>
+          </button>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style.width="{{stiffness}}%" attr.aria-valuenow="{{stiffness}}"
+              aria-valuemax="100"></div>
+          </div>
+          <div class="row">
+            <label for="">Soft And Playful</label><label style="position: absolute;left:40%;">Happy Medium</label><label
+              style="position: absolute;right:1%;">Stiff And Aggressive</label>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-sm-6 grid-box">
+
+        <p><b>{{ selectedBoard.introDescription }}</b></p>
+        <br>
+        <p>{{ selectedBoard.description }}</p>
+        <br>
+        <p><b>3-YEAR WARRANTY - SNOWBOARDS</b></p>
+        <p>All 2014 and newer Burton snowboards with The Channel mounting system (such as the one you are looking at
+          here) are backed by a three-year warranty from date of purchase.</p>
+
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="col-12 grid-box">
+
+      <h2>Size details</h2>
+      <p style="text-transform: uppercase; color:slategrey;">Men's Burton {{ selectedBoard.name }} Snowboard</p>
+      <table mdbTable bordered="true" hover="true">
+        <thead class="grey lighten-1 black-text">
+          <tr>
+            <td scope="row" style="width: 20%;">BOARD SIZE</td>
+            <th *ngFor='let spec of selectedBoard.boardSizeSpecs' class="text-center"><b>{{ spec.boardLength }}</b></th>
+          </tr>
+
+        </thead>
+        <tbody>
+          <tr mdbTableCol>
+            <th scope="row">Rider Weight Range</th>
+            <td class="text-center" *ngFor='let spec of selectedBoard.boardSizeSpecs'>
+              {{ spec.riderWeightMin }}-{{ spec.riderWeightMax }} kg</td>
+          </tr>
+          <tr mdbTableCol>
+            <th scope="row">Waist Width</th>
+            <td *ngFor='let spec of selectedBoard.boardSizeSpecs' class="text-center">{{ spec.waistWidth }} mm </td>
+          </tr>
+          <tr mdbTableCol>
+            <th scope="row">Binding size</th>
+            <td class="text-center" *ngFor='let spec of selectedBoard.boardSizeSpecs'>{{ spec.bindingSize }}</td>
+          </tr>
+          <tr mdbTableCol>
+            <th scope="row">Running Length</th>
+            <td class="text-center" *ngFor='let spec of selectedBoard.boardSizeSpecs'>{{ spec.runningLength }} cm </td>
+          </tr>
+          <tr mdbTableCol>
+            <th scope="row">Sidecut Radius</th>
+            <td class="text-center" *ngFor='let spec of selectedBoard.boardSizeSpecs'>{{ spec.sidcutRadius }} m </td>
+          </tr>
+          <tr mdbTableCol>
+            <th scope="row">Stance Width</th>
+            <td class="text-center" *ngFor='let spec of selectedBoard.boardSizeSpecs'>{{ spec.stanceWidth }} cm </td>
+          </tr>
+          <tr mdbTableCol>
+            <th scope="row">Effective Edge</th>
+            <td class="text-center" *ngFor='let spec of selectedBoard.boardSizeSpecs'>{{ spec.effectiveLength }} cm
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section class="tech-details">
+    <div class="row">
+      <div class="col-12">
+        <br>
+        <h2 class="text-center">Tech Details</h2>
+        <br>
+      </div>
+      <br>
+      <div class="col-md-6 grid-box" *ngFor='let techDetail of selectedBoard.techDetails'>
+        <img src="assets/img/{{techDetail.imagePath}}" class="img-fluid" alt="Responsive image">
+        <div class="row">
+          <label style="position: relative; left: 3%; text-transform: uppercase;">{{techDetail.techDetailType}}</label>
+          <a *ngIf="techDetail.techDetailType == 'flex'" class="modallink"
+            (click)="exploretechdetailmodal.show()" style="text-decoration: underline;">Explore
+            {{techDetail.techDetailType}}</a>
+          <a *ngIf="techDetail.techDetailType != 'flex'" class="modallink"
+          (click)="exploretechdetailmodal.show()" style="text-decoration: underline;">Explore
+          {{techDetail.techDetailType}}s</a>
+
+        </div>
+
+        <h3>{{techDetail.name}}</h3>
+        <p>{{techDetail.description}}</p>
+        
+         <!-- Explore techdetail modal body-->
+      <div mdbModal #exploretechdetailmodal="mdbModal" class="modal fade" tabindex="-1" role="dialog"
+      aria-labelledby="myBasicModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-fluid" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close pull-right" aria-label="Close" (click)="exploretechdetailmodal.hide()">
+              <span aria-hidden="true">×</span>
+            </button>
+            <h4 *ngIf="techDetail.techDetailType == 'flex'" class="modal-title w-100" id="myModalLabel" style="text-transform: capitalize;">{{techDetail.techDetailType}}</h4>
+            <h4 *ngIf="techDetail.techDetailType != 'flex'" class="modal-title w-100" id="myModalLabel" style="text-transform: capitalize;">{{techDetail.techDetailType}}s</h4>
+          </div>
+          <div class="modal-body">
+            <!-- explore techdetail component here-->
+            <app-explorebend dynamicdata = "{{techDetail.techDetailType}}"></app-explorebend>
+          </div>
+          <div class="modal-footer">
+            <button type="button" mdbBtn class="waves-light back" aria-label="Close"
+              (click)="exploretechdetailmodal.hide()" mdbWavesEffect>Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+      
+      </div>
+
+     
+
+    </div>
+  </section>
+  <section>
+    <div>
+      <p>Check out the full specs of all Burton's snowboards on <a href="http://www.burton.com"
+          style="text-decoration: underline; color:teal;">www.burton.com</a></p>
+
+    </div>
+    <div style="height: 50px;">
+      <button type="button" mdbBtn routerLink="/result" class="waves-light" mdbWavesEffect
+        style="position: absolute; right: 3%;">Back to result</button>
+      <br>
+      <br>
+    </div>
+
+  </section>
+  <!-- </div>  End card body -->
+
+
+</div>

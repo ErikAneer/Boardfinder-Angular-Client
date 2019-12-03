@@ -1,0 +1,87 @@
+<div class="card cardcontainer my-5 grey lighten-3 justify-content-md-center">
+  <div class="card-body">
+    <br>
+    <br>
+    <h1 class="text-center">
+      Welcome to the <img class="burton-logo" src="assets/img/burton.svg" height="35"> Boardfinder!
+    </h1>
+    <br>
+    <p>
+      Since 1977, Burton has been built on snowboards with men's options for park, all-mountain, powder, freestyle and
+      backcountry splitboards. Looking for a new snowboard,
+      but does not know which one to go for?
+      Try the Burton Boardfinder and it will help find you the right snowboard!
+    </p>
+    <br>
+
+    <div class="row">
+      <div class="centered-buttons">
+        <h2 class="text-center">Try the BoardFinder</h2>
+      </div>
+    </div>
+    <div class="row">
+
+      <div class="centered-buttons">
+        <button mdbBtn type="button" routerLink="/weight" color="default" size="lg" mdbWavesEffect>Find Men's
+          Snowboards</button>
+      </div>
+      <div class="centered-buttons">
+        <button mdbBtn type="button" color="default" size="lg" disabled mdbWavesEffect>Find Women's Snowboards</button>
+      </div>
+      <div class="centered-buttons">
+        <button mdbBtn type="button" color="default" size="lg" disabled mdbWavesEffect>Find Kid's Snowboards</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Display of top 3 most popular searched boards -->
+<div class="card cardcontainer my-5 grey lighten-3 justify-content-md-center" *ngIf="snowboards?.length > 0">
+
+  <div class="row">
+    <div>
+      <div>
+        <h1 class="text-center">Most popular snowboards!</h1>
+        <p class="text-center matching-board-description">These boards are currently the most
+          displayed boards in the boardfinder.</p>
+        <br>
+      </div>
+
+      <div class="row" style="display: flex;">
+
+        <div class="card boardcard" *ngFor='let board of snowboards | slice:0:9'>
+          <div class="view">
+            <!--Card image-->
+            <img src="../assets/img/boardimages/{{board?.imagePath}}" alt="Card image cap" style="width: 100%"
+              class="card-img-top" type="button" (click)="setSelectedBoard(board.id)">
+          </div>
+          <!--Card content-->
+          <div class="card-body">
+            <!--Title-->
+            <p style="text-transform: uppercase; color:slategrey;">{{board.ridingterrains[0].ridingType.ridingTypeName}}
+              Snowboard</p>
+            <h4 class="card-title" type="button" (click)="setSelectedBoard(board.id)">Men's Burton {{ board.name }}
+              Snowboard
+            </h4>
+            <div>
+              <p *ngIf="board.boardSizeSpecs.length >1">Available sizes:</p>
+              <p *ngIf="board.boardSizeSpecs.length ==1">Available size:</p>
+              <div class="board-lengths" *ngIf="board.boardSizeSpecs.length <= 5">
+                <label
+                  style="background:lightgrey; border-color: slategray; border: 3px; padding:5px; margin-right: 5px; "
+                  *ngFor='let spec of board.boardSizeSpecs'>{{ spec.boardLength}}</label>
+
+              </div>
+              <div class="board-lengths" *ngIf="board.boardSizeSpecs.length > 5">
+                <label
+                  style="background:lightgrey; border-color: slategray; border: 3px; padding:5px; margin-right: 5px; "
+                  *ngFor='let spec of board.boardSizeSpecs | slice:0:5;'>{{ spec.boardLength}}</label>
+                <label for=""> + {{ board.boardSizeSpecs.length -5 }} more</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

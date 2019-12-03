@@ -1,0 +1,14 @@
+.modal {
+    width: 30%;
+    position: fixed;
+    left: 35%;
+  }
+  
+  .modal-body{
+    height: 500px;
+    overflow: hidden;
+  }
+  
+  .modal-body:hover {
+    overflow-y: auto;
+  }

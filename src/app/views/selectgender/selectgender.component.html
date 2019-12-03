@@ -1,0 +1,48 @@
+<div class="card cardcontainer my-5" >
+    <div class="card-body">
+    <!-- Form starts -->
+    <form #f="ngForm" (submit)="saveGender(f)" novalidate>
+      <br>
+      <h2 class="card-title text-center">
+      Are you a guy or a girl?
+    </h2>
+    
+    <br>
+    <br>
+    <br>
+    <p>Pick one:</p>
+    <!-- Gender Radio buttons  -->
+    <div class="custom-control custom-radio">
+      <input type="radio" class="custom-control-input" id="defaultChecked" name="gender" value="Male" ngModel required>
+      <label class="custom-control-label" for="defaultChecked">Male</label>
+    </div>
+    
+    <!-- Default checked -->
+    <div class="custom-control custom-radio">
+      <input type="radio" class="custom-control-input" id="defaultUnchecked" name="gender" value="Female" ngModel required>
+      <label class="custom-control-label" for="defaultUnchecked">Female</label>
+    </div>
+
+    <div *ngIf="isSubmitted && f.invalid">
+      <br>
+
+      <p class="notselectederror">Please select either value</p>
+   </div>
+
+      <div class="cardfooter">
+      
+        <p>Step 1 / 8</p>
+        <div class="progress">
+          <div class="progress-bar teal" role="progressbar" style="width: 12.5%" aria-valuenow="12.5" aria-valuemin="0"
+            aria-valuemax="100"></div>
+        </div>
+        <br>
+       
+      <div class="row justify-content-between">
+        <button type="button"  routerLink="/home" class="btn back" >Back to start</button>
+        <button type="submit"  class="btn next" >Next</button>
+      </div>
+    </div> 
+    </form>
+    </div> <!-- End card body  -->
+</div> <!-- End card  -->

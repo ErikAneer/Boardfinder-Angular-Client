@@ -1,0 +1,92 @@
+
+
+* {
+ font-size: 100%;
+ font-family: Arial;
+}
+
+.cardcontainer {
+width: 100%;
+min-height: 500px;
+background-color: #f8f6f6;
+padding-left: 11.5px;
+}
+
+.btn {
+    background-color:#26a69a;
+    color: #f8f6f6;
+}
+
+.progress-bar {
+    background-color:#26a69a;
+
+}
+
+.cardcontent {
+    width: 94%;
+    position: absolute;
+    top: 40%;
+
+}
+
+.cardfooter {
+
+    width: 94%;
+    position: absolute;
+    top: 75%;
+
+}
+
+.back {
+    position: relative;
+    left: 1%;
+
+}
+
+.next{
+    position: relative;
+    right: 1%;
+
+}
+
+.result {
+    position: absolute;
+    right: -1%;
+
+}
+
+.cardbottombutton {
+
+    position: absolute;
+    top: 85%;
+    right: 1%;
+
+}
+
+.notselectederror{
+
+    color: red;
+}
+
+.modallink{
+    color:teal;
+
+}
+
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Times New Roman';
+    font-weight: bold;
+    
+    }
+
+    .tooltip-inner {
+        background-color: white;
+        color: black;
+        border-radius:0px;
+        text-align: left !important;
+    }
+
+    .tooltip .arrow{
+        display:none;
+    }

@@ -1,0 +1,90 @@
+<!--Main Navbar-->
+<nav id="main-Navbar" class="navbar navbar-expand-lg grey lighten-3">
+
+  <!-- Navbar brand -->
+  <a id="appTitle" class="navbar-brand text-black" routerLink="/">Erik's little <img class="burton-logo"
+      src="assets/img/burton.svg" height="29" > BoardFinder App</a>
+
+  <!-- Collapsible content -->
+  <links>
+
+    <!-- Links -->
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+            <a class="nav-link waves-light" mdbWavesEffect routerLink="/">Home</a>
+          </li>
+      <li class="nav-item active">
+        <a class="nav-link waves-light" (click)="aboutmodal.show()"mdbWavesEffect> About</a>
+      </li>
+
+    </ul>
+    <!-- Links -->
+  </links>
+  <!-- Collapsible content -->
+
+  <!-- Collapse button -->
+  <!--
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  -->
+</nav>
+
+<!--Sub Navbar-->
+<div  id="sub-Navbar" class="navbar subnavbar navbar-expand-lg navbar-dark teal">
+  <p *ngIf="router.url == '/home'" class="text-white" style="margin:auto;">Try the Boardfinder app to find your new Burton snowboard!</p>
+  <p *ngIf="router.url == '/result'" class="text-white" style="margin:auto;">Below you got the result!</p>
+  <!--<p *ngIf="router.url != '/home'" class="text-white" style="margin:auto;">Follow the 7 steps to get your recommended boards!</p> -->
+</div>
+<!--/ Sub Navbar-->
+
+<!-- Main-->
+<div style="background-image:url('assets/img/bg1.jpg'); background-repeat: no-repeat;
+background-size: cover; background-attachment: fixed;">
+  <div class="mask flex-center rgba-white-light" style="width: 100%; 
+  ">
+
+
+    <div class="row">
+
+      <div class="col-md-8" style="margin: auto;">
+        <router-outlet></router-outlet>
+
+      </div>
+      <div class="col-12" style="width: 100%; 
+      width: 100vw;">
+          <app-footer></app-footer>
+        </div>
+    </div>
+    
+  </div>
+
+</div>
+
+<!-- Explore bend modal body-->
+<div mdbModal #aboutmodal="mdbModal" class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fluid" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="aboutmodal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100" id="myModalLabel">About this app</h4>
+      </div>
+      <div class="modal-body">
+        <!-- explore flex component here-->
+        <p>This app was created to learn the basics in Angular and as a repeat practice to use a simple Microservices REST backend written in Java.</p>
+        <p>The design of the app and it's use is a combination of the current Burton Snowboards website and the boardfinder that could be found on Burton's website some years ago.
+          On purpose to be able to create the app in relatively short time it has been kept very simple and limited. 
+        </p>
+        <p>Due to being unable to load all the snowboard data from Burton Snowboards via an API the boardfinder app is in it's current state limited to some but not all Burton Men's snowboards.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" mdbBtn class="waves-light back" aria-label="Close" (click)="aboutmodal.hide()"
+          mdbWavesEffect>Close</button>
+      </div>
+    </div>
+  </div>
+</div>

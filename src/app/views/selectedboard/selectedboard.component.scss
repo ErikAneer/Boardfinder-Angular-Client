@@ -1,0 +1,93 @@
+.displayboardcardcontainer {
+    min-height: 500px;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    background-color: #f1f0f0;
+}
+
+section{
+    padding: 20px;
+
+}
+
+.modal {
+    width: 70%;
+    position: fixed;
+    left: 15%;
+}
+
+table {
+    background-color: white;
+}
+
+
+
+.modal-body{
+    height: 500px;
+    overflow: hidden;
+}
+
+.modal-body:hover {
+    overflow-y: auto;
+}
+
+.modallink {
+    position:absolute;
+    right: 3%; 
+    text-decoration: underline;
+}
+
+.tech-details{
+    background-color: white;
+}
+.board-description {
+    background-color: #f1f0f0;
+}
+
+img{
+    background-color: #f8f4f4;
+
+}
+
+.stiffness-chart label {
+    margin-top: 5px;
+    text-transform: uppercase; color:slategrey;
+    font-size: 12px;
+}
+
+.rider-terrains {
+    margin-top: 20px;
+
+}
+
+.infobutton {
+    margin-right: 5%;
+    color:teal;
+    background-color: white;
+    border:1px solid teal;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+}
+
+.infobutton-text {
+    color:teal;
+    height: 10px;
+   position: relative;
+   bottom:3px;
+}
+
+.info-heading {
+    display: inline;
+}
+
+.grid-box {
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+
+
+

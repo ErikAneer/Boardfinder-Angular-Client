@@ -1,0 +1,102 @@
+<div class="card cardcontainer my-5">
+    <div class="card-body">
+      <br>
+  
+      <h1 class="text-center">
+        What kind of board shape do you want? 
+      </h1>
+      <br>
+      <br>
+      <br> 
+      <!-- Shape Radio buttons  -->
+      <form #f="ngForm" (submit)="saveShape(f)" novalidate>
+      <div *ngFor='let shape of shapes; index as i'>
+          <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="{{shape.name}}{{shape.id}}" name="shaperadios" value="{{shape.name}}" ngModel required>
+              <label class="custom-control-label" for="{{shape.name}}{{shape.id}}" ></label><a (click)="shapemodal.show()">{{shape.name}}</a>
+          </div>
+       
+          <!-- modal body-->
+          <div mdbModal #shapemodal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="shapemodal.hide()">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title w-100" id="myModalLabel">{{shape.name}}</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>
+                        {{shape.description}} 
+                    </p>
+                    <img src="assets/img/{{shape.imagePath}}" class="img-fluid" alt="Responsive image">
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" mdbBtn class="waves-light back" aria-label="Close" (click)="shapeModal.hide()" mdbWavesEffect>Close</button>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- end radio modal body -->
+      </div> <!-- end ngFor-->
+      
+      <div class="custom-control custom-radio">
+        <input type="radio" class="custom-control-input" id="Any" name="shaperadios" value="Any" ngModel required>
+        <label class="custom-control-label" for="Any" ></label><a>Any / I don't know</a>
+    </div>
+
+    <br>
+      <!-- Shape info modal button  -->
+      <a type="button" (click)="shapeinfoModal.show()" style="color:teal;">What is shape?</a>
+  
+      <div *ngIf="isSubmitted && f.invalid">
+        
+        <p class="notselectederror">Please select either value</p>
+      </div>
+      <div *ngIf="errorMessage" class="alert alert-warning">
+          <strong>Ooops...</strong> It seems like the server is out riding fresh powder. Please try again later.
+     </div>
+  
+     
+     <div class="cardfooter">
+      <p>Step 6 / 7</p>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 85.6%" aria-valuenow="85.6" aria-valuemin="0"
+          aria-valuemax="100"></div>
+      </div>
+      <br>
+      <div class="row justify-content-between">
+          <button type="button"  routerLink="/bend" class="btn back">Previous </button>
+          <button type="submit" class="btn next">Next </button>
+      </div>
+    </div>
+    </form>
+    </div>
+  </div>
+  
+  
+  <!-- shapeinfo modal body-->
+  <div mdbModal #shapeinfoModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close pull-right" aria-label="Close" (click)="shapeinfoModal.hide()">
+              <span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title w-100" id="myModalLabel">Shape</h4>
+          </div>
+          <div class="modal-body">
+            <p>
+                One key element of how a board will ride is its shape. Each specific shape can be found under the Tech Features section of each board's product page.  Understanding the different board shapes can help you find which board is right for the conditions or terrain you ride in. 
+            </p>
+            <p>Click on the different shapes types to learn more about them.</p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" mdbBtn class="waves-light back" aria-label="Close" (click)="shapeinfoModal.hide()" mdbWavesEffect>Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  

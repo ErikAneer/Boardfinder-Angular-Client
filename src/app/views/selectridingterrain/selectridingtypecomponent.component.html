@@ -1,0 +1,47 @@
+<div class="card cardcontainer my-5">
+  <div class="card-body">
+    <form #f="ngForm" (submit)="saveTerrain(f)" novalidate >
+      <br>
+    <h1 class="text-center">
+      What kind of terrain do you most prefer to ride?
+    </h1>
+
+    <br>
+    <br>
+    <br>
+    <!-- Riding Type Radio buttons  -->
+    <div *ngFor='let riderterrain of riderTerrains; let i = index'>
+      <div class="custom-control custom-radio">
+        <input type="radio" class="custom-control-input" id="{{riderterrain.ridingTypeName}}{{riderterrain.id}}" name="terrainradios" value="{{riderterrain.ridingTypeName}}" ngModel required>
+        <label class="custom-control-label" for="{{riderterrain.ridingTypeName}}{{riderterrain.id}}">{{riderterrain.ridingTypeName}}</label>
+      </div>
+    </div>
+
+  
+
+    <div *ngIf="isSubmitted && f.invalid">
+      <br>
+
+      <p class="notselectederror">Please select one!</p>
+   </div>
+   <div *ngIf="errorMessage" class="alert alert-warning">
+      <strong>Ooops...</strong> It seems like the server is out riding fresh powder. Please try again later.
+ </div>
+
+      <div class="cardfooter">
+        
+        <p>Step 4 / 7</p>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: 57.1%" aria-valuenow="57.1" aria-valuemin="0"
+            aria-valuemax="100"></div>
+        </div>
+        <br>
+      
+      <div class="row justify-content-between">
+        <button  type="button" routerLink="/riderlevel" class="btn back">Previous </button>
+        <button type="submit" class="btn next">Next </button>
+      </div>
+    </div>
+    </form>
+    </div>
+  </div>

@@ -1,0 +1,46 @@
+<div class="card cardcontainer my-5">
+  <div class="card-body">
+    <form #f="ngForm" (submit)="saveRiderLevel(f)" novalidate >
+      <br>
+    <h1 class="text-center">
+      What is your riding level?
+    </h1>
+
+    <br>
+    <br>
+    <br>
+    <!-- Rider Level Radio buttons  -->
+
+    <div *ngFor='let riderlevel of riderLevels; let i = index'>
+      <div class="custom-control custom-radio">
+          <input type="radio" class="custom-control-input" id="{{riderlevel.riderlevel}}{{riderlevel.id}}" name="riderlevelradio" value="{{riderlevel.riderLevel}}" ngModel required>
+          <label class="custom-control-label" for="{{riderlevel.riderlevel}}{{riderlevel.id}}" >{{riderlevel.description}}</label>
+      </div>
+    </div>
+
+    <div *ngIf="isSubmitted && f.invalid">
+      <br>
+
+      <p class="notselectederror">Please select one!</p>
+   </div>
+   <div *ngIf="errorMessage" class="alert alert-warning">
+      <strong>Ooops...</strong> It seems like the server is out riding fresh powder. Please try again later.
+ </div>
+     
+  <div class="cardfooter">
+      
+      <p>Step 3 / 7</p>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 43.9%" aria-valuenow="43.9" aria-valuemin="0"
+          aria-valuemax="100"></div>
+      </div>
+      <br>
+    
+    <div class="row justify-content-between">
+      <button type="button" routerLink="/shoesize" class="btn back">Previous </button>
+      <button type="submit" class="btn next">Next </button>
+    </div>
+  </div>
+  </form>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+body,
+html {
+  height: 100%;
+  
+}
+
+#main-Navbar {
+  height: 80px;
+
+}
+
+#appTitle {
+  color: black;
+}
+
+#sub-Navbar .span {
+  position: absolute;
+    left: 40%;
+
+} 
+
+.nav-link {
+  color:black;
+}
+
+.modal {
+  width: 30%;
+  position: fixed;
+  left: 35%;
+}
+
+.modal-body{
+  
+  overflow: hidden;
+}
+
+.modal-body:hover {
+  overflow-y: auto;
+}
+
+.modallink {
+  position:absolute;
+  right: 3%; 
+  text-decoration: underline;
+}
+
+.burton-logo {
+  position: relative; top: -6.5px;
+}
+
+.navbar-brand {
+  position: relative;
+  left:5%;
+}

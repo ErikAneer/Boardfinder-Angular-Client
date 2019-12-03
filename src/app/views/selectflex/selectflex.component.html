@@ -1,0 +1,109 @@
+<div class="card cardcontainer my-5">
+    <div class="card-body">
+      <br>
+      <h1 class="text-center">
+        What kind of board flex do you want? 
+      </h1>
+      <br>
+      <br>
+      <br>
+      <!-- Flex info modal button  -->
+      <form #f="ngForm" (submit)="saveFlex(f)" novalidate>
+     
+      <br>
+      
+      <!-- Flex Radio buttons  -->
+      <div *ngFor='let flex of flexes;let i = index'>
+          <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="{{flex.name}}{{flex.id}}" name="flexradios" value="{{flex.name}}" ngModel required>
+              <label class="custom-control-label" for="{{flex.name}}{{flex.id}}" ></label><a (click)="flexmodal.show()">{{flex.name}}</a>
+          </div>
+       
+          <!-- modal body-->
+          <div mdbModal #flexmodal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="flexmodal.hide()">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title w-100" id="myModalLabel">{{flex.name}}</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>
+                        {{flex.description}} 
+                    </p>
+                    <img src="assets/img/{{flex.imagePath}}" class="img-fluid" alt="Responsive image">
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" mdbBtn  class="waves-light back" aria-label="Close"
+                      (click)="flexmodal.hide()" mdbWavesEffect>Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+
+      <div class="custom-control custom-radio">
+        <input type="radio" class="custom-control-input" id="Any" name="flexradios" value="Any" ngModel required>
+        <label class="custom-control-label" for="Any" ></label><a>Any /  I don't know</a>
+    </div>
+     
+    <br> 
+    <a  (click)="shapeinfoModal.show()" style="color:teal;">What is flex?</a>
+
+      <div *ngIf="isSubmitted && f.invalid">
+        <br>
+        <p class="notselectederror">Please select either value</p>
+      </div>
+      <div *ngIf="errorMessage" class="alert alert-warning">
+          <strong>Ooops...</strong> It seems like the server is out riding fresh powder. Please try again later.
+     </div>
+  
+  
+      
+      <div class="cardfooter">
+      <p>Step 7 / 7</p>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
+          aria-valuemax="100"></div>
+      </div>
+      <br>
+      <div class="row justify-content-between">
+          <button type="button" routerLink="/shape" class="btn back">Previous </button>
+          <button type="submit" class="btn result">Get the result!</button>
+        
+      </div>
+    </div>
+    </form>
+    </div>
+  </div>
+  
+  
+  <!-- shapeinfo modal body-->
+  <div mdbModal #shapeinfoModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close pull-right" aria-label="Close" (click)="shapeinfoModal.hide()">
+              <span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title w-100" id="myModalLabel">Flex</h4>
+          </div>
+          <div class="modal-body">
+            <p>
+                A board can flex, or bend, two ways. Longitudinal flex is the flex along the board’s length (most important to most boarders). Torsional flex is the flex across the board’s width.
+
+            </p>
+            <p>Click on the different flex types to learn more about them.</p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" mdbBtn  class="waves-light back" aria-label="Close"
+              (click)="shapeinfoModal.hide()" mdbWavesEffect>Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  

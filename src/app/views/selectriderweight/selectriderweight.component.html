@@ -1,0 +1,67 @@
+<div class="card cardcontainer my-5">
+    <div class="card-body">
+      <form #f="ngForm" (submit)="saveRiderWeight(f.value)" novalidate >
+        <br>
+      <h1 class="text-center">
+        What is your weight?
+      </h1>
+
+          <div class="cardcontent">
+          <label for="riderWeightRange">Specify your weight:</label>
+          <input id="riderWeightRange" type="range" class="custom-range" min="50" max="120" [(ngModel)] = "range" name="range" ngModel style="color:#26a69a;">
+          <p>Your weight: {{range}} Kg</p>
+          <br>
+          <!-- weight info modal button  -->
+          <a class="modallink" (click)="weightinfoModal.show()" style="color:teal;">Why does weight matter?</a>
+        </div>
+
+        
+
+          <br>
+          <div class="cardfooter" >
+          <p>Step 1 / 7</p>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 14.3%" aria-valuenow="14.3" aria-valuemin="0"
+              aria-valuemax="100"></div>
+          </div>
+          <br>
+        
+        <div class="row justify-content-between">
+          <button type= "button" routerLink="/home" class="btn back" >Back to start </button>
+          <button type="submit" class="btn next" >Next </button>
+        </div>
+      </div>
+      </form>
+      </div>
+  </div>
+
+<!-- weightinfo modal body-->
+<div mdbModal #weightinfoModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="weightinfoModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100" id="myModalLabel">Rider weight and board feel.</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+            Your board cannot feel your height. It can only feel your weight. Each board has been designed to suit a certain rider weight. 
+            Ideally your weight should be in just the middle between the minimum and the maximum recommended rider weight for the board. 
+            That is what the board has been designed for. 
+        </p>
+        <br>
+        <p>If you prefer a softer feel you should chose a board where your weight is closer to the maximum recommended rider weight.
+          And if you prefer a stiffer feel you should chose a board where your weight is closer to the minimum recommended rider weight.</p>
+          <br>
+          <p>Riding a too soft board can make the board loose grip and feel wobbly. Riding a too stiff board will be hard to press and manouver.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" mdbBtn class="waves-light back" aria-label="Close" (click)="weightinfoModal.hide()" mdbWavesEffect>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  
