@@ -11,6 +11,10 @@ import { SelectshapeComponent } from './views/selectshape/selectshape.component'
 import { SelectflexComponent } from './views/selectflex/selectflex.component'
 import { DisplayresultComponent } from './views/displayresult/displayresult.component'
 import { SelectedboardComponent } from './views/selectedboard/selectedboard.component'
+import { LoginComponent } from './views/login/login.component';
+import { LogoutComponent } from './views/logout/logout.component';
+import { StatisticsComponent } from './views/statistics/statistics.component';
+import { AuthGaurdService } from './services/auth-guard.service';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -24,7 +28,10 @@ const routes: Routes = [
   { path: 'shape', component: SelectshapeComponent },
   { path: 'flex', component: SelectflexComponent },
   { path: 'result', component: DisplayresultComponent },
-  { path: 'selectedboard', component: SelectedboardComponent }
+  { path: 'selectedboard', component: SelectedboardComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LogoutComponent }, 
+  { path: 'statistics', component: StatisticsComponent,canActivate:[AuthGaurdService]},
 ];
  
 @NgModule({

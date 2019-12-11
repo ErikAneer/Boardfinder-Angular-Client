@@ -24,6 +24,9 @@ import { SelectedboardComponent } from './views/selectedboard/selectedboard.comp
 import { FooterComponent } from './views/footer/footer.component';
 import { ExploreTechDetailComponent } from './views/exploretechdetail/exploretechdetail.component';
 import { GlobalHttpInterceptorService } from './global-http-interceptor.service';
+import { LoginComponent } from './views/login/login.component';
+import { LogoutComponent } from './views/logout/logout.component';
+import { StatisticsComponent } from './views/statistics/statistics.component';
 
 
 @NgModule({
@@ -42,6 +45,9 @@ import { GlobalHttpInterceptorService } from './global-http-interceptor.service'
     SelectedboardComponent,
     FooterComponent,
     ExploreTechDetailComponent,
+    LoginComponent,
+    LogoutComponent,
+    StatisticsComponent,
     
   ],
   imports: [

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { AuthenticationService } from './services/authentication.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class AppComponent implements OnInit {
   welcomeMessage: string;
   routerString: string;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private loginService:AuthenticationService) {
     this.title = 'Spring Boot Board Test- Angular Application';
     this.welcomeMessage = 'Welcome to the board finder app!';
     this.routerString = router.url;
