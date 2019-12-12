@@ -1,28 +1,25 @@
 import { Injectable } from '@angular/core';
+import { UserService } from './user.service';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
+  answer: String;
+  loggedin: Boolean = false;
   constructor() { }
-
-  authenticate(username, password) {
-    if (username === "javainuse" && password === "password") {
-      sessionStorage.setItem('username', username)
-      return true;
-    } else {
-      return false;
-    }
-  }
 
   isUserLoggedIn() {
     let user = sessionStorage.getItem('username')
-    console.log(!(user === null))
+    this.loggedin = true;
     return !(user === null)
   }
 
   logOut() {
     sessionStorage.removeItem('username')
+    this.loggedin = false;
   }
 }
