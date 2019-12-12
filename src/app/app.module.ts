@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -57,6 +57,7 @@ import { StatisticsComponent } from './views/statistics/statistics.component';
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [ShoesizeService, SnowboardService, RiderLevelService, { provide: HTTP_INTERCEPTORS, useClass: GlobalHttpInterceptorService, multi: true  }
   ],

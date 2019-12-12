@@ -7,9 +7,7 @@ import { AuthenticationService } from './services/authentication.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  //template: <app-selectshoesize (saveShoeSizeToParent)="saveShoeSizeValue($event)"></app-selectshoesize>
-   //         <app-selectgendercomponent (saveGenderToParent)="saveSelectedValue($event)"></app-selectgendercomponent>
-
+  
 })
 export class AppComponent implements OnInit {
   title: string;
@@ -40,7 +38,7 @@ export class AppComponent implements OnInit {
   public shape;
   public flex;
   
-
+    /*
   saveShoeSizeValue($event) {
     this.shoeSize = $event;
     console.log('Shoesize' + this.shoeSize);
@@ -50,5 +48,5 @@ export class AppComponent implements OnInit {
     this.gender = $event;
     console.log('The gender is: ' + this.gender);
   }
-
+  */
 }
