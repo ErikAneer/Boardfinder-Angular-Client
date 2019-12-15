@@ -8,7 +8,7 @@ import { SnowboardFilterObject } from '../snowboardFilterObject';
 })
 export class InteractionService implements OnInit{
 
-  private userGender = new BehaviorSubject<string>("Male");
+  private userGender = new BehaviorSubject<string>("");
   private userRiderWeight = new BehaviorSubject<number>(0);
   private userShoeSize = new BehaviorSubject<number>(0);
   private userRiderLevel = new BehaviorSubject<string>("");
@@ -22,6 +22,9 @@ export class InteractionService implements OnInit{
   private snowboards = new BehaviorSubject<Array<Snowboard>>(null);
   private snowboardsAlternativeFilter = new BehaviorSubject<Array<Snowboard>>(null);
   private hasReceivedBoardsFromDB = new BehaviorSubject<boolean>(false);
+
+  // Path
+  private previousPage= new BehaviorSubject<string>("");
 
   usergender$ = this.userGender.asObservable();
   userriderweight$ = this.userRiderWeight.asObservable();
@@ -37,10 +40,12 @@ export class InteractionService implements OnInit{
   snowboardsAlternativeFilter$ = this.snowboardsAlternativeFilter.asObservable();
   hasReceivedBoardsFromDB$ = this.hasReceivedBoardsFromDB.asObservable();
 
+  previousPage$ = this.previousPage.asObservable();
+
   constructor() { }
 
   ngOnInit(){
-    this.nullSearchParameters();
+    this.nullSearchParametersTotally();
   }
 
   storeGender(message: string){
@@ -91,9 +96,28 @@ export class InteractionService implements OnInit{
     this.hasReceivedBoardsFromDB.next(message);
   }
 
+  storePreviousPage(message: string){
+    this.previousPage.next(message);
+  }
 
-  nullSearchParameters(){
-    this.storeGender("Male");
+
+  nullSearchParametersTotally(){
+    this.storeGender("");
+    this.storeRiderWeight(0);
+    this.storeShoeSize(0);
+    this.storeRiderLevel("");
+    this.storeTerrain("null"); 
+    this.storeBend("message: string");
+    this.storeShape("");
+    this.storeFlex("");
+    this.storeBoardIdToDisplay(0);
+    this.storeBoardsToDisplayFromFilter(null);
+    this.storeAlternativeBoardsToDisplayFromFilter(null);
+    this.setReceivedBoardsFRomDB(false);
+  }
+
+  nullSearchParametersNewSearch(){
+    this.storeGender("");
     this.storeRiderWeight(0);
     this.storeShoeSize(0);
     this.storeRiderLevel("");

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { InteractionService } from '../../services/interaction.service';
 import { SnowboardService } from '../../services/snowboard.service';
 import { Snowboard } from '../../snowboard';
@@ -9,7 +9,7 @@ import { Snowboard } from '../../snowboard';
   styleUrls: ['./selectedboard.component.scss']
 })
 export class SelectedboardComponent implements OnInit {
-
+  //@Input() dynamicdata: string;
   selctedBoardId: number;
   selectedBoard: Snowboard;
   recommendedBoardLengths: String[];
@@ -17,6 +17,7 @@ export class SelectedboardComponent implements OnInit {
   stiffness: number;
   riderWeight: number;
   shoeSize: number;
+  pageToReturnTo: string;
 
   errorMessage = '';
   constructor(private interactionService: InteractionService, private snowboardService: SnowboardService) { }
@@ -29,23 +30,28 @@ export class SelectedboardComponent implements OnInit {
 
     this.interactionService.userriderweight$.subscribe(
       message => {
-      this.riderWeight = message;
+        this.riderWeight = message;
       });
 
     this.interactionService.usershoesize$.subscribe(
       message => {
-      this.shoeSize = message;
+        this.shoeSize = message;
       });
-    
-    this.getSelectedBoardFromDB()
 
+    this.interactionService.previousPage$.subscribe(
+      message => {
+        this.pageToReturnTo = "/" + message;
+      });
+    this.getSelectedBoardFromDB();
   }
 
   getSelectedBoardFromDB() {
     this.snowboardService.getBoardToDisplayById(this.selctedBoardId).subscribe(data => {
       this.selectedBoard = data;
-      this.getRecommendedBoardLengths();
 
+      if (this.riderWeight > 0) {
+        this.getRecommendedBoardLengths();
+      }
       this.setStiffness();
     },
       (error) => {
@@ -67,5 +73,4 @@ export class SelectedboardComponent implements OnInit {
         }
       );
   }
-
 }

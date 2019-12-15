@@ -16,8 +16,7 @@ export class UserService {
   public testUserService(username: String, password: String): Observable<String> {
 
     console.log("test user service login called")
-    return this.http.post(this.baseUrl + "/users/login", { "username": username, "password": password }, { responseType: 'text' });
+    return this.http.post(this.baseUrl + "/users/login", { username: username, password: password }, { responseType: 'text' });
   }
-
 
 }
