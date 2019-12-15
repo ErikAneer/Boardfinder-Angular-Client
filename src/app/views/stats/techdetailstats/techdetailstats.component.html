@@ -1,0 +1,21 @@
+<div class="row">
+    <h2 style="text-transform: capitalize;">{{dynamicdata}}</h2>
+    <table mdbTable>
+        <thead>
+            <tr>
+              <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+            </tr>
+          </thead>
+        <tbody>
+          <tr mdbTableCol *ngFor="let el of columns; let i =index">
+            <th scope="row">{{i+1}}</th>
+            <td >{{el.spec}}</td>
+            <td>{{el.count}}</td>
+            <td>{{el.percentage}} %</td>
+          </tr>
+        </tbody>
+      </table>
+    <div *ngIf="errorMessage" class="alert alert-warning">
+            <strong>Ooops...</strong> It seems like the server is out riding fresh powder. Please try again later.
+       </div>
+</div>

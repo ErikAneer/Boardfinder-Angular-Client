@@ -27,6 +27,10 @@ import { GlobalHttpInterceptorService } from './global-http-interceptor.service'
 import { LoginComponent } from './views/login/login.component';
 import { LogoutComponent } from './views/logout/logout.component';
 import { StatisticsComponent } from './views/statistics/statistics.component';
+import { TotalsearchesComponent } from './views/stats/totalsearches/totalsearches.component';
+import { TotalnumberdisplayedboardsComponent } from './views/stats/totalnumberdisplayedboards/totalnumberdisplayedboards.component';
+import { DisplayedboardsComponent } from './views/stats/displayedboards/displayedboards.component';
+import { TechdetailstatsComponent } from './views/stats/techdetailstats/techdetailstats.component';
 
 
 @NgModule({
@@ -48,6 +52,10 @@ import { StatisticsComponent } from './views/statistics/statistics.component';
     LoginComponent,
     LogoutComponent,
     StatisticsComponent,
+    TotalsearchesComponent,
+    TotalnumberdisplayedboardsComponent,
+    DisplayedboardsComponent,
+    TechdetailstatsComponent,
     
   ],
   imports: [
