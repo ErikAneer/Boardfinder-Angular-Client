@@ -36,6 +36,12 @@
             <div>
               <br>
             </div>
+            <div *ngIf="recommendedBoardLengths == null">
+              <p>
+                Check out the stats below or try the Boardfinder to check if this board is for you!
+                You can also call one of the Burton Guides to get their expert advice on sizing for you: 00800 287 866 13
+              </p>
+            </div>
             <div *ngIf="selectedBoard.boardSizeSpecs.length == 1">
               <h5>THE {{ selectedBoard.boardSizeSpecs[0].boardLength}} SHOULD DO THE TRICK.</h5>
               <p>
@@ -43,8 +49,6 @@
                 To be sure your fit is dialed, please don't hesitate to call one of the Burton Guides to get their
                 expert advice: 00800 287 866 13
               </p>
-
-
             </div>
             <div
               *ngIf="selectedBoard.boardSizeSpecs.length > 1 && recommendedBoardLengths != null && recommendedBoardLengths.length > 1">
@@ -141,7 +145,7 @@
 
       <h2>Size details</h2>
       <p style="text-transform: uppercase; color:slategrey;">Men's Burton {{ selectedBoard.name }} Snowboard</p>
-      <table mdbTable bordered="true" hover="true">
+      <table mdbTable responsive="true" bordered="true" hover="true">
         <thead class="grey lighten-1 black-text">
           <tr>
             <td scope="row" style="width: 20%;">BOARD SIZE</td>
@@ -247,8 +251,8 @@
 
     </div>
     <div style="height: 50px;">
-      <button type="button" mdbBtn routerLink="/result" class="waves-light" mdbWavesEffect
-        style="position: absolute; right: 3%;">Back to result</button>
+      <button type="button" mdbBtn routerLink="{{pageToReturnTo}}" class="waves-light" mdbWavesEffect
+        style="position: absolute; right: 3%;">Back</button>
       <br>
       <br>
     </div>

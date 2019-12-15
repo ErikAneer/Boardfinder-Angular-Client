@@ -22,14 +22,14 @@
     <div class="row">
 
       <div class="centered-buttons">
-        <button mdbBtn type="button" routerLink="/weight" color="default" size="lg" mdbWavesEffect>Find Men's
+        <button mdbBtn type="button" (click)="chooseGender('male')" color="default" size="lg" mdbWavesEffect>Find Men's
           Snowboards</button>
       </div>
       <div class="centered-buttons">
-        <button mdbBtn type="button" color="default" size="lg" disabled mdbWavesEffect>Find Women's Snowboards</button>
+        <button mdbBtn type="button" (click)="chooseGender('female')" color="default" size="lg"  mdbWavesEffect>Find Women's Snowboards</button>
       </div>
       <div class="centered-buttons">
-        <button mdbBtn type="button" color="default" size="lg" disabled mdbWavesEffect>Find Kid's Snowboards</button>
+        <button mdbBtn type="button" (click)="chooseGender('kids')" color="default" size="lg" disabled mdbWavesEffect>Find Kid's Snowboards</button>
       </div>
     </div>
   </div>
@@ -53,14 +53,14 @@
           <div class="view">
             <!--Card image-->
             <img src="../assets/img/boardimages/{{board?.imagePath}}" alt="Card image cap" style="width: 100%"
-              class="card-img-top" type="button" (click)="setSelectedBoard(board.id)">
+              class="card-img-top" type="button" (click)="setSelectedBoard(board.id, 'home')">
           </div>
           <!--Card content-->
           <div class="card-body">
             <!--Title-->
             <p style="text-transform: uppercase; color:slategrey;">{{board.ridingterrains[0].ridingType.ridingTypeName}}
               Snowboard</p>
-            <h4 class="card-title" type="button" (click)="setSelectedBoard(board.id)">Men's Burton {{ board.name }}
+            <h4 class="card-title" type="button" (click)="setSelectedBoard(board.id,'home')">Men's Burton {{ board.name }}
               Snowboard
             </h4>
             <div>

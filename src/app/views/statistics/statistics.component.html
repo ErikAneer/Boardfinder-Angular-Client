@@ -1,9 +1,47 @@
 <div class="card cardcontainer my-5">
     <div class="card-body">
+    <h2>Boardfinder Statistics</h2>
+    <br>
+    <div class="row">
+    <div class="col-sm-5 offset-sm-1">
+    <app-totalsearches></app-totalsearches>
+    </div>
+</div>
+<br>
+<div class="row">
+        <div class="col-sm-8 offset-sm-1">
+    <app-displayedboards></app-displayedboards>
+    <app-totalnumberdisplayedboards></app-totalnumberdisplayedboards>
+</div>
+</div>
+<br>
+<div class="row">
+        <div class="col-sm-5 offset-sm-1">
+            <h2>Statistis on search criteria</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 offset-sm-1">
+            <app-techdetailstats dynamicdata = "flex"></app-techdetailstats>
+        </div>
+        <div class="col-sm-4 offset-sm-1">
+            <app-techdetailstats dynamicdata = "shapes"></app-techdetailstats>
+        </div>
+        <div class="col-sm-4 offset-sm-1">
+            <app-techdetailstats dynamicdata = "bends"></app-techdetailstats>
+        </div>
+        <div class="col-sm-4 offset-sm-1">
+            <app-techdetailstats dynamicdata = "shoesizes"></app-techdetailstats>
+        </div>
+    <div class="col-sm-4 offset-sm-1">
+    <app-techdetailstats dynamicdata = "gender"></app-techdetailstats>
+</div>
+    <div class="col-sm-4 offset-sm-1">
+    <app-techdetailstats dynamicdata = "riderlevel"></app-techdetailstats>
+    </div>
 
-
-<p>statistics works!</p>
-
-
+    <div class="col-sm-4 offset-sm-1">
+    <app-techdetailstats dynamicdata = "terrain"></app-techdetailstats>
+    </div>
 </div>
 </div>
