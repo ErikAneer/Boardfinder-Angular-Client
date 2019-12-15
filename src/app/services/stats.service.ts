@@ -1,19 +1,32 @@
 import { Injectable } from '@angular/core';
 import { Stats } from '../stats';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StatsService {
-  private statsUrl: string;
+  private statsUrl: string = '/displayedboards/';
+
+  baseUrl = environment.baseUrl; 
 
   constructor(private http: HttpClient) {
-    this.statsUrl = 'http://localhost:8081/displayedboardstats';
   }
  
   public getTop3DisplayedBoardIds(): Observable<number[]> {
-    return this.http.get<number[]>(this.statsUrl + "/top3displayedboards");
+    
+    const headerDict = {
+      'Content-Type': 'application/json',
+  'Accept': 'application/json',
+      'Access-Control-Allow-Headers': '*',
+    }
+    const requestOptions = {                                                                                                                                                                                 
+      headers: new HttpHeaders(headerDict), 
+    };
+    //const headers = new Headers({'Access-Control-Allow-Headers': '*'});
+
+    return this.http.get<number[]>(this.baseUrl + this.statsUrl + "top3displayedboards", requestOptions);
   }
 }

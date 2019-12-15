@@ -1,21 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { AuthenticationService } from './services/authentication.service';
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  //template: <app-selectshoesize (saveShoeSizeToParent)="saveShoeSizeValue($event)"></app-selectshoesize>
-   //         <app-selectgendercomponent (saveGenderToParent)="saveSelectedValue($event)"></app-selectgendercomponent>
-
+  
 })
 export class AppComponent implements OnInit {
   title: string;
   welcomeMessage: string;
   routerString: string;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private loginService:AuthenticationService) {
     this.title = 'Spring Boot Board Test- Angular Application';
     this.welcomeMessage = 'Welcome to the board finder app!';
     this.routerString = router.url;
@@ -39,7 +38,7 @@ export class AppComponent implements OnInit {
   public shape;
   public flex;
   
-
+    /*
   saveShoeSizeValue($event) {
     this.shoeSize = $event;
     console.log('Shoesize' + this.shoeSize);
@@ -49,5 +48,5 @@ export class AppComponent implements OnInit {
     this.gender = $event;
     console.log('The gender is: ' + this.gender);
   }
-
+  */
 }

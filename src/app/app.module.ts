@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -24,6 +24,9 @@ import { SelectedboardComponent } from './views/selectedboard/selectedboard.comp
 import { FooterComponent } from './views/footer/footer.component';
 import { ExploreTechDetailComponent } from './views/exploretechdetail/exploretechdetail.component';
 import { GlobalHttpInterceptorService } from './global-http-interceptor.service';
+import { LoginComponent } from './views/login/login.component';
+import { LogoutComponent } from './views/logout/logout.component';
+import { StatisticsComponent } from './views/statistics/statistics.component';
 
 
 @NgModule({
@@ -42,6 +45,9 @@ import { GlobalHttpInterceptorService } from './global-http-interceptor.service'
     SelectedboardComponent,
     FooterComponent,
     ExploreTechDetailComponent,
+    LoginComponent,
+    LogoutComponent,
+    StatisticsComponent,
     
   ],
   imports: [
@@ -51,6 +57,7 @@ import { GlobalHttpInterceptorService } from './global-http-interceptor.service'
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [ShoesizeService, SnowboardService, RiderLevelService, { provide: HTTP_INTERCEPTORS, useClass: GlobalHttpInterceptorService, multi: true  }
   ],
