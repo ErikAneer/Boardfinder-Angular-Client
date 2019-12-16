@@ -19,14 +19,14 @@
         <div class="view">
           <!--Card image-->
           <img src="../assets/img/boardimages/{{board?.imagePath}}" alt="Card image cap" style="width: 100%"
-            class="card-img-top" type="button" (click)="setSelectedBoard(board.id,'app-displayresult')">
+            class="card-img-top" type="button" (click)="setSelectedBoard(board.id,'result')">
         </div>
         <!--Card content-->
         <div class="card-body">
           <!--Title-->
           <p style="text-transform: uppercase; color:slategrey;">{{board.ridingterrains[0].ridingType.ridingTypeName}}
             Snowboard</p>
-          <h4 class="card-title" type="button" (click)="setSelectedBoard(board.id,'app-displayresult')">Men's Burton {{ board.name }} Snowboard
+          <h4 class="card-title" type="button" (click)="setSelectedBoard(board.id,'result')">{{ board.boardGender.sex }}'s Burton {{ board.name }} Snowboard
           </h4>
           <div>
             <p *ngIf="board.boardSizeSpecs.length >1">Available sizes:</p>
@@ -46,7 +46,7 @@
           </div>
         </div>
       </div>
-
+ 
     </div>
   </div>
   <!--End display of search result -->
@@ -83,14 +83,14 @@
         <div class="view">
           <!--Card image-->
           <img src="../assets/img/boardimages/{{board.imagePath}}" alt="Card image cap" style="width: 100%"
-            class="card-img-top" type="button" (click)="setSelectedBoard(board.id,'app-displayresult')">
+            class="card-img-top" type="button" (click)="setSelectedBoard(board.id,'result')">
         </div>
         <!--Card content-->
         <div class="card-body">
           <!--Title-->
           <p style="text-transform: uppercase; color:slategrey;">{{board.ridingterrains[0].ridingType.ridingTypeName}}
             Snowboard</p>
-          <h2 class="card-title" type="button" (click)="setSelectedBoard(board.id,'app-displayresult')">{{ board.name }} {{ board.length }}
+          <h2 class="card-title" type="button" (click)="setSelectedBoard(board.id,'result')">{{ board.boardGender.sex }}'s Burton {{ board.name }} Snowboard
           </h2>
           <div>
             <p *ngIf="board.boardSizeSpecs.length >1">Available sizes:</p>
@@ -125,14 +125,14 @@
         <div class="view">
           <!--Card image-->
           <img src="../assets/img/boardimages/{{board.imagePath}}" alt="Card image cap" style="width: 100%"
-            class="card-img-top" type="button" (click)="setSelectedBoard(board.id,'app-displayresult')">
+            class="card-img-top" type="button" (click)="setSelectedBoard(board.id,'result')">
         </div>
         <!--Card content-->
         <div class="card-body">
           <!--Title-->
           <p style="text-transform: uppercase; color:slategrey;">{{board.ridingterrains[0].ridingType.ridingTypeName}}
             Snowboard</p>
-          <h2 class="card-title" type="button" (click)="setSelectedBoard(board.id,'app-displayresult')">{{ board.name }} {{ board.length }}
+          <h2 class="card-title" type="button" (click)="setSelectedBoard(board.id,'result')">{{ board.boardGender.sex }}'s Burton {{ board.name }} Snowboard
           </h2>
           <div>
             <p *ngIf="board.boardSizeSpecs.length >1">Available sizes:</p>

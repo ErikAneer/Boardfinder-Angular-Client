@@ -23,6 +23,13 @@ export class SelectedboardComponent implements OnInit {
   constructor(private interactionService: InteractionService, private snowboardService: SnowboardService) { }
 
   ngOnInit() {
+    this.interactionService.previousPage$.subscribe(
+      message => {
+        this.pageToReturnTo = "/" + message;
+        console.log("page to return to: " + message);
+        
+        //this.getSelectedBoardFromDB();
+      });
     this.interactionService.boardIdToDisplay$.subscribe(
       message => {
         this.selctedBoardId = message;
@@ -38,10 +45,9 @@ export class SelectedboardComponent implements OnInit {
         this.shoeSize = message;
       });
 
-    this.interactionService.previousPage$.subscribe(
-      message => {
-        this.pageToReturnTo = "/" + message;
-      });
+    
+
+      console.log("page to return to: " + this.pageToReturnTo);
     this.getSelectedBoardFromDB();
   }
 

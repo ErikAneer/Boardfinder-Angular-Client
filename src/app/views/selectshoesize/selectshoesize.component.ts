@@ -13,10 +13,16 @@ export class SelectshoesizeComponent implements OnInit {
   isSubmitted = false;
   shoesizes: Shoesize[];
   errorMessage = '';
+  gender: string = "";
   constructor(private shoesizeservice: ShoesizeService, private interactionService: InteractionService, private router: Router) { }
-
+  
   ngOnInit() {
-    this.shoesizeservice.findAll().subscribe(data => {
+    this.interactionService.usergender$.subscribe(
+      message => {
+        this.gender = message;
+      });
+      console.log("gender = " + this.gender);
+    this.shoesizeservice.findAll(this.gender).subscribe(data => {
       this.shoesizes = data;
     },
     (error) => {
