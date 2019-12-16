@@ -18,7 +18,7 @@ export class ShoesizeService {
     this.shoesizeUrl = '/shoesizes/';
   }
  
-  public findAll(): Observable<Shoesize[]> {
-    return this.http.get<Shoesize[]>(this.baseUrl + this.shoesizeUrl);
+  public findAll(selectedgender: string): Observable<Shoesize[]> {
+    return this.http.post<Shoesize[]>(this.baseUrl + this.shoesizeUrl, {gender: selectedgender});
   }
 }

@@ -8,7 +8,7 @@
 
           <div class="cardcontent">
           <label for="riderWeightRange">Specify your weight:</label>
-          <input id="riderWeightRange" type="range" class="custom-range" min="50" max="120" [(ngModel)] = "range" name="range" ngModel style="color:#26a69a;">
+          <input id="riderWeightRange" type="range" class="custom-range" min="{{min}}" max="{{max}}" [(ngModel)] = "range" name="range" ngModel style="color:#26a69a;">
           <p>Your weight: {{range}} Kg</p>
           <br>
           <!-- weight info modal button  -->

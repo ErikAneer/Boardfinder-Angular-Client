@@ -22,14 +22,14 @@
     <div class="row">
 
       <div class="centered-buttons">
-        <button mdbBtn type="button" (click)="chooseGender('male')" color="default" size="lg" mdbWavesEffect>Find Men's
+        <button mdbBtn type="button" (click)="chooseGender('men')" color="default" size="lg" mdbWavesEffect>Find Men's
           Snowboards</button>
       </div>
       <div class="centered-buttons">
-        <button mdbBtn type="button" (click)="chooseGender('female')" color="default" size="lg"  mdbWavesEffect>Find Women's Snowboards</button>
+        <button mdbBtn type="button" (click)="chooseGender('women')" color="default" size="lg"  mdbWavesEffect>Find Women's Snowboards</button>
       </div>
       <div class="centered-buttons">
-        <button mdbBtn type="button" (click)="chooseGender('kids')" color="default" size="lg" disabled mdbWavesEffect>Find Kid's Snowboards</button>
+        <button mdbBtn type="button" (click)="chooseGender('kids')" color="default" size="lg" disabled mdbWavesEffect>Find Kid's / Youth's Snowboards</button>
       </div>
     </div>
   </div>
@@ -60,7 +60,7 @@
             <!--Title-->
             <p style="text-transform: uppercase; color:slategrey;">{{board.ridingterrains[0].ridingType.ridingTypeName}}
               Snowboard</p>
-            <h4 class="card-title" type="button" (click)="setSelectedBoard(board.id,'home')">Men's Burton {{ board.name }}
+            <h4 class="card-title" type="button" (click)="setSelectedBoard(board.id,'home')">{{ board.boardGender.sex }}'s Burton {{ board.name }} Snowboard
               Snowboard
             </h4>
             <div>

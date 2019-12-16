@@ -134,8 +134,8 @@ export class DisplayresultComponent implements OnInit {
 
   }
 
-  setSelectedBoard(boardId: number) {
-
+  setSelectedBoard(boardId: number, currentPage: string) {
+    this.interactionService.storePreviousPage(currentPage);
     this.interactionService.storeBoardIdToDisplay(boardId);
     this.router.navigate(['/selectedboard']);
   }
@@ -147,7 +147,7 @@ export class DisplayresultComponent implements OnInit {
 
   backToStart() {
     this.interactionService.nullSearchParametersTotally();
-    this.router.navigate(['/weight']);
+    this.router.navigate(['/home']);
   }
 
   saveSnowboards() {
