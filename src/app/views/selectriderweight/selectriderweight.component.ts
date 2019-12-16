@@ -8,14 +8,38 @@ import { Router } from '@angular/router';
   styleUrls: ['./selectriderweight.component.scss']
 })
 export class SelectriderweightComponent implements OnInit {
-
+  gender: string = "";
+  range: number;
+  min: number;
+  max: number;
  constructor(private interactionService : InteractionService, private router: Router) { }
 
   ngOnInit() {
 
+    this.interactionService.usergender$.subscribe(
+      message => {
+        this.gender = message;
+      });
+
+      if (this.gender == "men"){
+        this.range = 70;
+        this.min = 50;
+        this.max = 120;
+      }
+      if (this.gender == "women"){
+        this.range = 50;
+        this.min = 36;
+        this.max = 95;
+      }
+      if (this.gender == "kids"){
+        this.range = 50;
+        this.min = 25;
+        this.max = 68;
+      }
+      console.log("gender: " + this.gender + " range: " + this.range + " min: " + this.min + " max: " + this.max);
   }
 
-  range: number = 70;
+  
 
   saveRiderWeight(value: any) {
     this.range = value.range;
