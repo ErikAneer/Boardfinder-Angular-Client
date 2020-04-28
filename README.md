@@ -17,10 +17,10 @@ This application consists of a number of projects:
 * Boardfinder-User/Authentication-Service: https://github.com/ErikAneer/Boardfinder-User-Service
 * Boardfinder-Service-Registry-Service: https://github.com/ErikAneer/Boardfinder-Service-Registry-Service 
 
-# Angular
+## Angular
 Boardfinder-Angular-Client: https://github.com/ErikAneer/Boardfinder-Angular-Client  
 
-The application also utilize RabbitMQ Message Broker https://www.rabbitmq.com/ and MySQL https://www.mysql.com/ 
+* The application also utilize RabbitMQ Message Broker https://www.rabbitmq.com/ and MySQL https://www.mysql.com/ 
 
 # How to run the Boardfinder App
 
@@ -42,6 +42,7 @@ CREATE USER boardfinder@'localhost' IDENTIFIED BY 'boardfinder';
 GRANT SELECT, INSERT ON boardfinder.* TO boardfinder@'localhost';
 
 flush privileges;
+
 If you wish you can use your own MySQL user instead of the above as long as it has the same priviliges as above user.
 
 ## Run the app
