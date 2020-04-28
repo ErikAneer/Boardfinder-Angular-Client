@@ -42,7 +42,7 @@
                 You can also call one of the Burton Guides to get their expert advice on sizing for you: 00800 287 866 13
               </p>
             </div>
-            <div *ngIf="selectedBoard.boardSizeSpecs.length == 1">
+            <div *ngIf="selectedBoard.boardSizeSpecs.length == 1 && recommendedBoardLengths != null">
               <h5>THE {{ selectedBoard.boardSizeSpecs[0].boardLength}} SHOULD DO THE TRICK.</h5>
               <p>
                 Lucky you! As this awesome board apears in your search it should suit you fine.
@@ -132,9 +132,8 @@
         <br>
         <p>{{ selectedBoard.description }}</p>
         <br>
-        <p><b>3-YEAR WARRANTY - SNOWBOARDS</b></p>
-        <p>All 2014 and newer Burton snowboards with The Channel mounting system (such as the one you are looking at
-          here) are backed by a three-year warranty from date of purchase.</p>
+        <p><b>{{ selectedBoard.warranty.header }}</b></p>
+        <p>{{ selectedBoard.warranty.description }}</p>
 
       </div>
     </div>
@@ -145,7 +144,7 @@
 
       <h2>Size details</h2>
       <p style="text-transform: uppercase; color:slategrey;">{{ selectedBoard.boardGender.sex }}'s Burton {{ selectedBoard.name }} Snowboard</p>
-      <table mdbTable responsive="true" bordered="true" hover="true">
+      <table mdbTable bordered="true" hover="true">
         <thead class="grey lighten-1 black-text">
           <tr>
             <td scope="row" style="width: 20%;">BOARD SIZE</td>
@@ -247,7 +246,7 @@
   <section>
     <div>
       <p>Check out the full specs of all Burton's snowboards on <a href="http://www.burton.com"
-          style="text-decoration: underline; color:teal;">www.burton.com</a></p>
+          style="text-decoration: underline; color:teal;" target="_blank">www.burton.com</a></p>
 
     </div>
     <div style="height: 50px;">

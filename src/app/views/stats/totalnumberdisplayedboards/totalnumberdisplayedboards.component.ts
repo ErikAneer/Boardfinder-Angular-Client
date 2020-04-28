@@ -14,7 +14,6 @@ export class TotalnumberdisplayedboardsComponent implements OnInit {
   ngOnInit() {
     this.statsService.getTotalNumerOfDisplayedBoards().subscribe(data => {
       this.totalNumer = data;
-      console.log("Number of seaches: " + data)
     },
     (error) => {
       this.errorMessage = error.message; 

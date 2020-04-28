@@ -5,7 +5,7 @@
       What kind of board bend do you want?
     </h1>
     <br>
-    
+    <h3>Available bends:</h3>
     <!-- Gender Radio buttons  -->
     <form #f="ngForm" (submit)="saveBend(f)" novalidate>
       <div *ngFor='let bend of bends;let i = index'>
@@ -44,7 +44,7 @@
       </div> <!-- end ngFor radios-->
       <div class="custom-control custom-radio">
         <input type="radio" class="custom-control-input" id="Any" name="bendradios"
-          value="Any" ngModel required>
+          value="Undecided" ngModel required>
         <label class="custom-control-label" for="Any"></label> <a
           >Any / I don't know</a>
       </div>

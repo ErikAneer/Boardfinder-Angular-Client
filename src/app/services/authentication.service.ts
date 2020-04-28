@@ -1,25 +1,58 @@
 import { Injectable } from '@angular/core';
-import { UserService } from './user.service';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+
+/*
+export class JwtResponse {
+  constructor(
+    public jwttoken: string,
+  ) { }
+}*/
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
+  baseUrl = environment.baseUrl;
   answer: String;
   loggedin: Boolean = false;
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
+
+  authenticate(username, password) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.httpClient.post<any>(this.baseUrl + "/auth/", { username, password }, {
+      headers, responseType: "json",
+      observe: 'response'
+    })
+      .pipe(map(
+        (response: any) => {
+          sessionStorage.setItem('username', username);
+          let tokenStr = response.headers.get('authorization');
+          sessionStorage.setItem('token', tokenStr);
+          return response;
+        }
+      )
+    );
+  }
+
+  checkIfUserLoggedInBackend() {
+    return this.httpClient.get<any>(this.baseUrl + '/users/isloggedin');
+  }
 
   isUserLoggedIn() {
-    let user = sessionStorage.getItem('username')
     this.loggedin = true;
-    return !(user === null)
+    return !(sessionStorage.getItem('username') === null)
   }
 
   logOut() {
+    return this.httpClient.get<any>(this.baseUrl + '/users/logout');
+  }
+
+  clearSession() {
     sessionStorage.removeItem('username')
+    sessionStorage.removeItem('token')
     this.loggedin = false;
   }
 }

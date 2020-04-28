@@ -21,7 +21,6 @@ export class DisplayedboardsComponent implements OnInit {
     this.statsService.getAllDisplayedBoardsStats().subscribe(data => {
       this.techdetailstatsspec = data;
       this.columns = this.techdetailstatsspec.statsSpecification;
-      console.log("Received tech spec stats: " + data)
     },
     (error) => {
       this.errorMessage = error.message; 

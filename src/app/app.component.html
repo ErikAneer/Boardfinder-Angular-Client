@@ -16,10 +16,9 @@
       <li class="nav-item active">
         <a class="nav-link waves-light" (click)="aboutmodal.show()"mdbWavesEffect> About</a>
       </li>
-      <li class="nav-item active"><a class="nav-link waves-light" *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link">Admin Login</a></li>
-      <li class="nav-item active"><a class="nav-link waves-light" *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a></li>
-  
-
+      <li class="nav-item active"><a class="nav-link waves-light"  [style.display]="!loginService.isUserLoggedIn() && router.url != '/login' ? 'block' : 'none'" routerLink="/login" class="nav-link">Admin Login</a></li>
+      <li class="nav-item active"><a class="nav-link waves-light" [style.display]="loginService.isUserLoggedIn() ? 'block' : 'none'"  routerLink="/logout" class="nav-link">Logout</a></li>
+      <li class="nav-item active"><a class="nav-link waves-light" [style.display]="loginService.isUserLoggedIn() && router.url != '/statistics' ? 'block' : 'none'"  routerLink="/statistics" class="nav-link">Stats</a></li>
     </ul>
     <!-- Links -->
   </links>

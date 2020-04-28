@@ -25,8 +25,6 @@ export class SelectgenderComponent implements OnInit {
       this.router.navigate(['/weight']);
       this.interactionService.storeGender(form.value.gender);
     }
-
-
   }
 
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Shoesize } from '../shoesize';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -18,7 +18,7 @@ export class ShoesizeService {
     this.shoesizeUrl = '/shoesizes/';
   }
  
-  public findAll(selectedgender: string): Observable<Shoesize[]> {
-    return this.http.post<Shoesize[]>(this.baseUrl + this.shoesizeUrl, {gender: selectedgender});
+  public findAllByGender(selectedgender: string): Observable<Shoesize[]> {
+    return this.http.get<Shoesize[]>(this.baseUrl + this.shoesizeUrl + selectedgender);
   }
 }

@@ -15,7 +15,6 @@ export class TotalsearchesComponent implements OnInit {
   ngOnInit() {
     this.statsService.getTotalNumerOfSearches().subscribe(data => {
       this.totalNumber = data;
-      console.log("Number of seaches: " + data)
     },
     (error) => {
       this.errorMessage = error.message; 

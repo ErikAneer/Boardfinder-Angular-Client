@@ -10,7 +10,7 @@ import { TechdetailService } from 'src/app/services/techdetail.service';
   styleUrls: ['./selectflex.component.scss']
 })
 export class SelectflexComponent implements OnInit {
-
+  gender: string = "";
   isSubmitted = false;
   flexes: Techdetail[];
   selectedFlex: string = "";
@@ -23,7 +23,11 @@ export class SelectflexComponent implements OnInit {
 
 
   ngOnInit() {
-    this.techdetailService.findAll("flex").subscribe(data => {
+    this.interactionService.usergender$.subscribe(
+      message => {
+        this.gender = message;
+      });
+    this.techdetailService.findAllByGender("flex", this.gender).subscribe(data => {
       this.flexes = data;
     },
     (error) => {

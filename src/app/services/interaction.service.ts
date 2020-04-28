@@ -117,7 +117,6 @@ export class InteractionService implements OnInit{
   }
 
   nullSearchParametersNewSearch(){
-    this.storeGender("");
     this.storeRiderWeight(0);
     this.storeShoeSize(0);
     this.storeRiderLevel("");

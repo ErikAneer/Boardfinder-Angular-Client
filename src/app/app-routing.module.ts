@@ -15,6 +15,7 @@ import { LoginComponent } from './views/login/login.component';
 import { LogoutComponent } from './views/logout/logout.component';
 import { StatisticsComponent } from './views/statistics/statistics.component';
 import { AuthGaurdService } from './services/auth-guard.service';
+import { RouteResolver } from './services/routeresolver.service';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -31,11 +32,15 @@ const routes: Routes = [
   { path: 'selectedboard', component: SelectedboardComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent }, 
-  { path: 'statistics', component: StatisticsComponent,canActivate:[AuthGaurdService]},
+  { path: 'statistics', component: StatisticsComponent,canActivate:[AuthGaurdService],resolve: {
+    routeResolver: RouteResolver
+  },},
+  { path: '**', redirectTo: 'home'},
 ];
  
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [RouteResolver]
 })
 export class AppRoutingModule { }

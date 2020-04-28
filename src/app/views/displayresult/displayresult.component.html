@@ -115,11 +115,20 @@
   <!-- showing alternative snowboards -->
   <div *ngIf="snowboards?.length == 0 && snowboardsAlternativeFilter?.length > 0">
     <br>
+    <div *ngIf="snowboardsAlternativeFilter?.length > 1">
     <h1 class="text-center matching-board-description">Check out these {{ preferredTerrain }} boards!</h1>
     <p>Your search did unfortunately not give any perfect matches. However, the following boards might be interesting
       for you even though they are not a full match. A little different in shape, bend or flex than you searched for,
       still awesome {{ preferredTerrain | lowercase }} boards.</p>
     <br>
+  </div>
+  <div *ngIf="snowboardsAlternativeFilter?.length == 1">
+    <h1 class="text-center matching-board-description">Check out this {{ preferredTerrain }} board!</h1>
+    <p>Your search did unfortunately not give any perfect matches. However, the following board might be interesting
+      for you even though they are not a full match. A little different in shape, bend or flex than you searched for,
+      still awesome {{ preferredTerrain | lowercase }} board.</p>
+    <br>
+  </div>
     <div class="row" style="display: flex;">
       <div class=" card boardcard" *ngFor='let board of snowboardsAlternativeFilter | slice:0:6;'>
         <div class="view">

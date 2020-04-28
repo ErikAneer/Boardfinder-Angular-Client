@@ -21,12 +21,10 @@ export class TechdetailstatsComponent implements OnInit {
     this.statsService.getTechSpecsStats(this.dynamicdata).subscribe(data => {
       this.techdetailstatsspec = data;
       this.columns = this.techdetailstatsspec.statsSpecification;
-      console.log("Received tech spec stats: " + data)
     },
     (error) => {
       this.errorMessage = error.message; 
   }
-    
     );
   }
 
