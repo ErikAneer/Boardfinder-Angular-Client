@@ -11,7 +11,7 @@
       <br>
       <br>
       <select  [(ngModel)] = "selectedSize" name="size" ngModel required>
-          <option disabled hidden [value]="selectUndefinedOptionValue">-- select your size --</option>
+          <option disabled hidden>-- select your size --</option>
         <option *ngFor="let item of shoesizes" [value]="item.euSize" >Eur {{item.euSize}} </option>
 
       </select>

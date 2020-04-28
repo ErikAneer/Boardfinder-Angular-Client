@@ -14,6 +14,7 @@ export class SelectshoesizeComponent implements OnInit {
   shoesizes: Shoesize[];
   errorMessage = '';
   gender: string = "";
+  selectedSize: number;
   constructor(private shoesizeservice: ShoesizeService, private interactionService: InteractionService, private router: Router) { }
   
   ngOnInit() {
@@ -21,18 +22,17 @@ export class SelectshoesizeComponent implements OnInit {
       message => {
         this.gender = message;
       });
-      console.log("gender = " + this.gender);
-    this.shoesizeservice.findAll(this.gender).subscribe(data => {
+    this.shoesizeservice.findAllByGender(this.gender).subscribe(data => {
       this.shoesizes = data;
+      this.selectedSize = this.shoesizes[0].euSize;
     },
     (error) => {
       this.errorMessage = error.message; 
   }
-    
     );
   }
 
-  selectedSize: number;
+  
 
   public saveShoeSize(form: any) {
     this.isSubmitted = true;

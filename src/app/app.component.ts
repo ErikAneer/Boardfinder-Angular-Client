@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   welcomeMessage: string;
   routerString: string;
 
-  constructor(private router: Router, private loginService:AuthenticationService) {
+  constructor(public router: Router, public loginService:AuthenticationService) {
     this.title = 'Spring Boot Board Test- Angular Application';
     this.welcomeMessage = 'Welcome to the board finder app!';
     this.routerString = router.url;
@@ -37,16 +37,4 @@ export class AppComponent implements OnInit {
   public bend;
   public shape;
   public flex;
-  
-    /*
-  saveShoeSizeValue($event) {
-    this.shoeSize = $event;
-    console.log('Shoesize' + this.shoeSize);
-  }
-
-  saveGenderValue($event) {
-    this.gender = $event;
-    console.log('The gender is: ' + this.gender);
-  }
-  */
 }

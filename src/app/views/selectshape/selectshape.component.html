@@ -7,7 +7,7 @@
       </h1>
       <br>
       <br>
-      <br> 
+      <h3>Available shapes:</h3> 
       <!-- Shape Radio buttons  -->
       <form #f="ngForm" (submit)="saveShape(f)" novalidate>
       <div *ngFor='let shape of shapes; index as i'>
@@ -41,7 +41,7 @@
       </div> <!-- end ngFor-->
       
       <div class="custom-control custom-radio">
-        <input type="radio" class="custom-control-input" id="Any" name="shaperadios" value="Any" ngModel required>
+        <input type="radio" class="custom-control-input" id="Any" name="shaperadios" value="Undecided" ngModel required>
         <label class="custom-control-label" for="Any" ></label><a>Any / I don't know</a>
     </div>
 

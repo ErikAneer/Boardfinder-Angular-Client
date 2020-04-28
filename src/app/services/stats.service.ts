@@ -10,7 +10,8 @@ import { Techdetailstats } from '../techdetailstats';
 })
 export class StatsService {
   private displayedBoardsUrl: string = '/displayedboards/';
-  private statsUrl: string = '/stats/';
+  private statsUrl: string = '/boardsearches/';
+  private promoUrl: string = '/promotion/';
 
   baseUrl = environment.baseUrl; 
 
@@ -21,15 +22,28 @@ export class StatsService {
     
     const headerDict = {
       'Content-Type': 'application/json',
-  'Accept': 'application/json',
+      'Accept': 'application/json',
       'Access-Control-Allow-Headers': '*',
     }
     const requestOptions = {                                                                                                                                                                                 
       headers: new HttpHeaders(headerDict), 
     };
-    //const headers = new Headers({'Access-Control-Allow-Headers': '*'});
 
     return this.http.get<number[]>(this.baseUrl + this.displayedBoardsUrl + "top3displayedboards", requestOptions);
+  }
+
+  public getTop3DisplayedBoardIdsForPromotions(): Observable<number[]> {
+    
+    const headerDict = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Access-Control-Allow-Headers': '*',
+    }
+    const requestOptions = {                                                                                                                                                                                 
+      headers: new HttpHeaders(headerDict), 
+    };
+
+    return this.http.get<number[]>(this.baseUrl + this.promoUrl + "top3displayedboards", requestOptions);
   }
 
   public getTotalNumerOfSearches(): Observable<number> {

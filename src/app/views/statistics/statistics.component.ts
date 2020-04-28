@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-statistics',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StatisticsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+              private router: Router,
+              private loginservice: AuthenticationService) { }
 
   ngOnInit() {
+    /*
+    this.loginservice.checkIfUserLoggedInBackend().subscribe(data => {
+    },
+    (error) => {
+      this.router.navigate(['/login']);
   }
-
+    );*/
+  }
 }

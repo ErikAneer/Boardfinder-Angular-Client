@@ -1,11 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentChecked, ChangeDetectorRef } from '@angular/core';
 import { InteractionService } from '../../services/interaction.service';
-import { Stats } from '../../stats';
 import { StatsService } from 'src/app/services/stats.service';
 import { SnowboardService } from 'src/app/services/snowboard.service';
 import { Snowboard } from 'src/app/snowboard';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-startscreen',
@@ -20,11 +18,11 @@ export class StartscreenComponent implements OnInit {
 
   constructor(private interactionService: InteractionService,
     private statsService: StatsService, private snowboardService: SnowboardService,
-    private router: Router, private userservice: UserService) { }
+    private router: Router, private cdRef : ChangeDetectorRef) { }
 
   ngOnInit() {
     this.interactionService.nullSearchParametersTotally();
-    this.statsService.getTop3DisplayedBoardIds().subscribe(data => {
+    this.statsService.getTop3DisplayedBoardIdsForPromotions().subscribe(data => {
       this.stats = data;
       this.getTop3BoardsfromStats();
     },
@@ -32,6 +30,7 @@ export class StartscreenComponent implements OnInit {
         this.errorMessage = error.message;
       }
     );
+    this.cdRef.detectChanges();
   }
 
   chooseGender(gender: string) {

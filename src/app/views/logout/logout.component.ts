@@ -16,7 +16,13 @@ export class LogoutComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authentocationService.logOut();
+    // Empty subscribe in order to make the logout call to be done. 
+    // Then clear session.
+    this.authentocationService.logOut().subscribe(data => {
+    } , error => {
+    }
+    );
+    this.authentocationService.clearSession();
     this.router.navigate(['home']);
   }
 

@@ -10,7 +10,7 @@ import { Techdetail } from 'src/app/techdetail';
   styleUrls: ['./selectbend.component.scss']
 })
 export class SelectbendComponent implements OnInit {
-
+  gender: string = "";
   isSubmitted = false;
   selectedBend: string = "";
   bends: Techdetail[];
@@ -19,7 +19,11 @@ export class SelectbendComponent implements OnInit {
   constructor(private techdetailService: TechdetailService, private interactionService: InteractionService, private router: Router) { }
 
   ngOnInit() {
-    this.techdetailService.findAll("bend").subscribe(data => {
+    this.interactionService.usergender$.subscribe(
+      message => {
+        this.gender = message;
+      });
+    this.techdetailService.findAllByGender("bend", this.gender).subscribe(data => {
       this.bends = data;
     },
     (error) => {

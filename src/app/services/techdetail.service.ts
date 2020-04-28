@@ -18,4 +18,8 @@ export class TechdetailService {
   public findAll(path: string): Observable<Techdetail[]> {
     return this.http.get<Techdetail[]>(this.baseUrl + this.techdetailUrl + path);
   }
+
+  public findAllByGender(path: string, gender: string): Observable<Techdetail[]> {
+    return this.http.post<Techdetail[]>(this.baseUrl + this.techdetailUrl + path,{ gender: gender } );
+  }
 }

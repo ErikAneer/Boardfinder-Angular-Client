@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:8000/boardfinder'  
+  baseUrl: 'https://localhost:8443/boardfinder'  
 };
 
 /*

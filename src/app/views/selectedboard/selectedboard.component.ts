@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { InteractionService } from '../../services/interaction.service';
 import { SnowboardService } from '../../services/snowboard.service';
 import { Snowboard } from '../../snowboard';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-selectedboard',
@@ -20,15 +21,14 @@ export class SelectedboardComponent implements OnInit {
   pageToReturnTo: string;
 
   errorMessage = '';
-  constructor(private interactionService: InteractionService, private snowboardService: SnowboardService) { }
+  constructor(private interactionService: InteractionService, 
+              private snowboardService: SnowboardService,
+              private router: Router) { }
 
   ngOnInit() {
     this.interactionService.previousPage$.subscribe(
       message => {
         this.pageToReturnTo = "/" + message;
-        console.log("page to return to: " + message);
-        
-        //this.getSelectedBoardFromDB();
       });
     this.interactionService.boardIdToDisplay$.subscribe(
       message => {
@@ -44,10 +44,10 @@ export class SelectedboardComponent implements OnInit {
       message => {
         this.shoeSize = message;
       });
-
+    if(this.selctedBoardId == null || this.selctedBoardId == 0) {
+      this.router.navigate(['/home']);
+    }
     
-
-      console.log("page to return to: " + this.pageToReturnTo);
     this.getSelectedBoardFromDB();
   }
 

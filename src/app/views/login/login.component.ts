@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { first, delay } from 'rxjs/operators';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +11,6 @@ import { UserService } from 'src/app/services/user.service';
 export class LoginComponent implements OnInit {
   [x: string]: any;
 
-  //username = 'javainuse'
-  //password = ''
   invalidLogin = false
   errorMessage = '';
   loginForm: FormGroup;
@@ -25,8 +21,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router,
     private loginservice: AuthenticationService,
-    private formBuilder: FormBuilder,
-    private userservice: UserService
+    private formBuilder: FormBuilder
     ) { }
 
   ngOnInit() {
@@ -38,56 +33,21 @@ export class LoginComponent implements OnInit {
   }
   get f() { return this.loginForm.controls; }
 
-  /*
-    async  onSubmit() {
-      this.submitted = true;
-        if (this.loginForm.invalid) {
-            return;
-        }
-        this.loading = true;
-    
-   this.login  = await  this.loginservice.authenticate(this.f.username.value, this.f.password.value);      
-   if (this.login )
-     {
-      console.log("entered true in auth service")      
-      this.invalidLogin = false
-
-    } else
-    console.log("entered false in auth service")
-      this.invalidLogin = true
-      this.loading = false;
-      this.submitted = false;
-      this.loginForm.reset();
-      this.errorMessage = "error";
-
-
-  }
-*/
   async onSubmit() {
-    this.userservice.testUserService(this.f.username.value, this.f.password.value).subscribe(async data => {
+    (this.loginservice.authenticate(this.f.username.value, this.f.password.value).subscribe(data => {
       this.answer = data;
-
-    if (this.f.username.value == this.answer) {
-      sessionStorage.setItem('username', this.f.username.value);
-      
-      this.loggedin = true;
       this.invalidLogin = false
       this.router.navigate(['/statistics']);
-    } else {
+    } , error => {
       this.loggedin = false;
       this.invalidLogin = true
       this.loading = false;
       this.submitted = false;
       this.loginForm.reset();
       this.errorMessage = "error";
+      //this.errorMessage = error.message;
     }
-
-    },
-      (error) => {
-        this.errorMessage = error.message;
-      }
-
-
+    )
     );
-    }
+  }
 }

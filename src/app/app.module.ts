@@ -31,6 +31,7 @@ import { TotalsearchesComponent } from './views/stats/totalsearches/totalsearche
 import { TotalnumberdisplayedboardsComponent } from './views/stats/totalnumberdisplayedboards/totalnumberdisplayedboards.component';
 import { DisplayedboardsComponent } from './views/stats/displayedboards/displayedboards.component';
 import { TechdetailstatsComponent } from './views/stats/techdetailstats/techdetailstats.component';
+import { interceptorProviders } from './interceptors';
 
 
 @NgModule({
@@ -67,7 +68,7 @@ import { TechdetailstatsComponent } from './views/stats/techdetailstats/techdeta
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [ShoesizeService, SnowboardService, RiderLevelService, { provide: HTTP_INTERCEPTORS, useClass: GlobalHttpInterceptorService, multi: true  }
+  providers: [ShoesizeService, SnowboardService, RiderLevelService, interceptorProviders
   ],
   bootstrap: [AppComponent]
 })

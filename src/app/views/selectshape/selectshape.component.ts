@@ -10,7 +10,7 @@ import { TechdetailService } from 'src/app/services/techdetail.service';
   styleUrls: ['./selectshape.component.scss']
 })
 export class SelectshapeComponent implements OnInit {
-
+  gender: string = "";
   isSubmitted = false;
   shapes: Techdetail[];
   selectedShape: string = "";
@@ -18,7 +18,11 @@ export class SelectshapeComponent implements OnInit {
   constructor(private techdetailService: TechdetailService, private interactionService: InteractionService, private router: Router) { }
 
   ngOnInit() {
-    this.techdetailService.findAll("shape").subscribe(data => {
+    this.interactionService.usergender$.subscribe(
+      message => {
+        this.gender = message;
+      });
+    this.techdetailService.findAllByGender("shape", this.gender).subscribe(data => {
       this.shapes = data;
     },
     (error) => {

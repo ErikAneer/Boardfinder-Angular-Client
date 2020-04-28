@@ -32,14 +32,11 @@ export class SelectriderweightComponent implements OnInit {
         this.max = 95;
       }
       if (this.gender == "kids"){
-        this.range = 50;
-        this.min = 25;
+        this.range = 35;
+        this.min = 11;
         this.max = 68;
       }
-      console.log("gender: " + this.gender + " range: " + this.range + " min: " + this.min + " max: " + this.max);
   }
-
-  
 
   saveRiderWeight(value: any) {
     this.range = value.range;
