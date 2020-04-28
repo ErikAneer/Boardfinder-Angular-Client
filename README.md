@@ -4,7 +4,7 @@ The Boardfinder-Angular-Client is the Angular client for the Boardfinder App.
 
 # What is the Boardfinder app?
 
-The Boardfinder app is a clone of the boardfinder that Burton Snowboards earlier had on their website for customers to receive recommendations on what snowboards from Burton by answering some questions about for example foot size, preferred riding style, riding experience etc. The Boardfinder app is a school project without any commercial purpose and is in a way be a tribute to Burton Snowboards. 
+The Boardfinder app is a clone of the boardfinder that Burton Snowboards earlier had on their website for customers to receive recommendations on what snowboards from Burton by answering some questions about for example foot size, preferred riding style, riding experience etc. The Boardfinder app is a school project without any commercial purpose and is in a way a tribute to Burton Snowboards. 
 
 The application consists of an Angular client communicating with a Spring Boot microservices cluster backend. Some of the Spring Boot microservices utilize RabbitMQ as a message broker between two of the services and MySQL for storing/reading data. 
 
