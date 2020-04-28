@@ -1,37 +1,45 @@
-# MdbAngularFree
+# What is the Boardfinder app?
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0-rc.5.
+The Boardfinder app is a clone of the boardfinder that Burton Snowboards earlier had on their website for customers to receive recommendations on what snowboards from Burton by answering some questions about for example foot size, preferred riding style, riding experience etc. The Boardfinder app is a school project without any commercial purpose and is in a way be a tribute to Burton Snowboards. 
 
-## Development server
+The application consists of an Angular client communicating with a Spring Boot microservices cluster backend. Some of the Spring Boot microservices utilize RabbitMQ as a message broker between two of the services and MySQL for storing/reading data. 
 
-Run `ng serve mdb-angular-free` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# Projects/Modules
+This application consists of a number of projects:
+Spring Boot 
+Boardfinder-Service: https://github.com/ErikAneer/Boardfinder-Boardfinder-Service 
+Boardfinder-APIGateway: https://github.com/ErikAneer/Boardfinder-APIGateway 
+Boardfinder-Statistics-Service: https://github.com/ErikAneer/Boardfinder-Statistics-Service 
+Boardfinder-User/Authentication-Service ????
+Boardfinder-Service-Registry-Service: https://github.com/ErikAneer/Boardfinder-Service-Registry-Service 
 
-## Demo application
+# Angular
+Boardfinder-Angular-Client: https://github.com/ErikAneer/Boardfinder-Angular-Client  
 
-Run `ng serve mdb-demo` for a demo application build with MDB Angular Pro components.
+The application also utilize RabbitMQ Message Broker https://www.rabbitmq.com/ and MySQL https://www.mysql.com/ 
 
-## Code scaffolding
+# How to run the Boardfinder App
+Set up the Spring Boot projects
+Download all the the Spring Boot projects and build them either in the IDE or by running the command 'mvn clean install' from the projects´ root folder. 
+## Set up the Angular Client 
+Download the Angular client.
+## Download and install RabbitMQ and MySQL if not already installed
+To run the application on localhost you also need to have RabbitMQ and MYSQL installed, download and install if needed. 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Set up MySQL for the app
+Use the MySQL Workbench to create the needed database schemas: boardfinder_stats,  boardfinder_boards and  boardfinder_users in the MySQL workbench 
+For the app to be able to access the MySQL database a user with select and insert priviliges is needed. Create the user in the MySQL workbench or from the MySQL command line using the following: 
 
-## Build
+CREATE USER boardfinder@'localhost' IDENTIFIED BY 'boardfinder';
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+GRANT SELECT, INSERT ON boardfinder.* TO boardfinder@'localhost';
 
-## Running unit tests
+flush privileges;
+If you wish you can use your own MySQL user instead of the above as long as it has the same priviliges as above user.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-## Remove demo application
-
-Type one of the below commands to remove demo application from this project:
-* npm run remove-demo-unix to remove demo application on UNIX based systems,
-* npm run remove-demo-windows to remove demo application on Windows systems.
+## Run the app
+1. Start MySQL
+2. Start RabbitMQ. It might already be started automatically, otherwise start it using the RabbitMQ Service – start program that should be bundled in the RabbitMQ installation, or from the command line with 'net start rabbitmq'. Starting RabbitMQ might take a little while so wait for it to start.
+3. Run the five Spring Boot applications. Run the Service Registry first to save some time as the other applications will to try to register to it when they start. Then start the API-Gateway and after that the three remaining projects.
+4. Start the Angular Client from it's root folder in an IDE as Visual Studio Code or from the command line with the command 'ng serve'.
+5. Browse to https://localhost:4200/ to use the app!
