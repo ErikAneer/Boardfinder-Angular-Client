@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
       this.submitted = false;
       this.loginForm.reset();
       this.errorMessage = "error";
-      //this.errorMessage = error.message;
+      this.errorMessage = error.message;
     }
     )
     );
