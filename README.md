@@ -28,7 +28,9 @@ Boardfinder-Angular-Client: https://github.com/ErikAneer/Boardfinder-Angular-Cli
 Download all the the Spring Boot projects and build them either in the IDE or by running the command 'mvn clean install' from the projects´ root folder. 
 
 ## Set up the Angular Client 
-Download the Angular client.
+Download the Angular client. The preferred IDE to open the Angular Client in is VS Code. To run the project you also need to have 1. Node.js, 2. NPM and 3. Angular CLI installed. If not, you have to install them all first. 
+Having set up the dev enrironemt run 'npm install' in the projetc´s root folder to download all needed dependencies.
+
 
 ## Download and install RabbitMQ and MySQL if not already installed
 To run the application on localhost you also need to have RabbitMQ and MYSQL installed, download and install if needed. Please follow the installation guides for RabbitMQ and MYSQL to make sure that they are installed properly. 
