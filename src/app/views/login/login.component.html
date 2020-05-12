@@ -13,17 +13,17 @@
     -->
     
     <h2>Login</h2>
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
     <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" (focus)="notFocused=false; setErrorMessage('')" (focusout)="notFocused=true"/>
         <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
             <div *ngIf="f.username.errors.required">Username is required</div>
         </div>
     </div>
     <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" (focus)="notFocused=false; setErrorMessage('')" (focusout)="notFocused=true"/>
         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
             <div *ngIf="f.password.errors.required">Password is required</div>
         </div>
@@ -36,8 +36,8 @@
 
     </div>
 </form>
-<div *ngIf="errorMessage" class="alert alert-warning">
-    <strong>Ooops...</strong> It seems like the login credentials are bad. Please try again!
+<div *ngIf="errorMessage && notFocused" class="alert alert-warning">
+    <strong>{{errorTitle}}</strong> {{errorMessage}}
 </div>
 
 </div>

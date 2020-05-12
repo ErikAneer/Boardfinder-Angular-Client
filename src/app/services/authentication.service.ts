@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
+import { UserDto } from '../userdto';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +15,9 @@ export class AuthenticationService {
   loggedin: Boolean = false;
   constructor(private httpClient: HttpClient) { }
 
-  authenticate(username, password) {
+  authenticate(username, password) : Observable<HttpResponse<UserDto>> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.httpClient.post<any>(this.baseUrl + "/auth/", { username, password }, {
+    return this.httpClient.post(this.baseUrl + "/auth/", { username, password }, {
       headers, responseType: "json",
       observe: 'response'
     })
@@ -24,6 +26,7 @@ export class AuthenticationService {
           sessionStorage.setItem('username', username);
           let tokenStr = response.headers.get('authorization');
           sessionStorage.setItem('token', tokenStr);
+          sessionStorage.setItem('role', response.body.role);
           return response;
         }
       )
@@ -46,6 +49,7 @@ export class AuthenticationService {
   clearSession() {
     sessionStorage.removeItem('username')
     sessionStorage.removeItem('token')
+    sessionStorage.removeItem('role')
     this.loggedin = false;
   }
 }

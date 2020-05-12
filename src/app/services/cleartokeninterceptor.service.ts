@@ -33,7 +33,8 @@ export class ClearTokenInterceptor implements HttpInterceptor {
       return next.handle(req).pipe(
         catchError((error, caught) => {
           if (error instanceof HttpErrorResponse ) {
-            if (this._checkTokenExpiryErr(error) && (sessionStorage.getItem('token') != null && req.url === 'https://localhost:8443/boardfinder/users/isloggedin')) { 
+            if (this._checkTokenExpiryErr(error) && (sessionStorage.getItem('token') != null 
+            && req.url === 'https://localhost:8443/boardfinder/users/isloggedin')) { 
             this.cleartoken();
               req = req.clone({
                 setHeaders: {
