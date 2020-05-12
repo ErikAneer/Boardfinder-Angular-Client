@@ -26,6 +26,9 @@ export class InteractionService implements OnInit{
   // Path
   private previousPage= new BehaviorSubject<string>("");
 
+  private errorTitle = new BehaviorSubject<string>("");
+  private errorMessage = new BehaviorSubject<string>("");
+
   usergender$ = this.userGender.asObservable();
   userriderweight$ = this.userRiderWeight.asObservable();
   usershoesize$ = this.userShoeSize.asObservable();
@@ -41,6 +44,9 @@ export class InteractionService implements OnInit{
   hasReceivedBoardsFromDB$ = this.hasReceivedBoardsFromDB.asObservable();
 
   previousPage$ = this.previousPage.asObservable();
+
+  errorTitle$ = this.errorTitle.asObservable();
+  errorMessage$ = this.errorMessage.asObservable();
 
   constructor() { }
 
@@ -98,6 +104,14 @@ export class InteractionService implements OnInit{
 
   storePreviousPage(message: string){
     this.previousPage.next(message);
+  }
+
+  storeErrorTitle(message: string){
+    this.errorTitle.next(message);
+  }
+
+  storeErrorMessage(message: string){
+    this.errorMessage.next(message);
   }
 
 

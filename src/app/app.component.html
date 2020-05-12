@@ -11,7 +11,7 @@
     <!-- Links -->
     <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-            <a class="nav-link waves-light" mdbWavesEffect routerLink="/">Home</a>
+            <a class="nav-link waves-light" [style.display]="router.url != '/home' ? 'block' : 'none'" mdbWavesEffect routerLink="/">Home</a>
           </li>
       <li class="nav-item active">
         <a class="nav-link waves-light" (click)="aboutmodal.show()"mdbWavesEffect> About</a>
@@ -24,20 +24,12 @@
   </links>
   <!-- Collapsible content -->
 
-  <!-- Collapse button -->
-  <!--
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  -->
 </nav>
 
 <!--Sub Navbar-->
 <div  id="sub-Navbar" class="navbar subnavbar navbar-expand-lg navbar-dark teal">
   <p *ngIf="router.url == '/home'" class="text-white" style="margin:auto;">Try the Boardfinder app to find your new Burton snowboard!</p>
   <p *ngIf="router.url == '/result'" class="text-white" style="margin:auto;">Below you got the result!</p>
-  <!--<p *ngIf="router.url != '/home'" class="text-white" style="margin:auto;">Follow the 7 steps to get your recommended boards!</p> -->
 </div>
 <!--/ Sub Navbar-->
 
